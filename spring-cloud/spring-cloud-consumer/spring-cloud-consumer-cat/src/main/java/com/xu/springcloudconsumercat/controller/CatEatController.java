@@ -23,7 +23,7 @@ public class CatEatController {
 
     @RequestMapping("catlove")
     public Girl catlove(){
-        return helloRemote.xx();
+        return helloRemote.meetGirl();
     }
 
 }

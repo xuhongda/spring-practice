@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 @FeignClient(name= "spring-cloud-producer-server")
 public interface HelloRemote {
     /**
-     * hell0
+     * hello
      * @param str
      * @return
      */
@@ -25,9 +25,9 @@ public interface HelloRemote {
     String hello(@RequestParam(value = "str") String str);
 
     /**
-     *
+     * 获取一个女孩
      * @return
      */
     @RequestMapping("girl")
-    Girl xx();
+    Girl meetGirl();
 }
