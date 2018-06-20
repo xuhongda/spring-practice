@@ -1,5 +1,6 @@
 package com.xu.springcloudconsumercat.controller;
 
+import com.xu.pojo.Girl;
 import com.xu.springcloudconsumercat.remote.HelloRemote;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,4 +20,10 @@ public class CatEatController {
     public String cateat(String str){
         return helloRemote.hello(str);
     }
+
+    @RequestMapping("catlove")
+    public Girl catlove(){
+        return helloRemote.xx();
+    }
+
 }

@@ -10,6 +10,7 @@
     <version>1.0-SNAPSHOT</version>
     <modules>
         <module>spring-integration</module>
+        <module>spring-component</module>
     </modules>
 
     <dependencyManagement>
