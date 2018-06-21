@@ -16,12 +16,12 @@ import org.springframework.web.bind.annotation.RestController;
 public class CatEatController {
     @Autowired
     private HelloRemote helloRemote;
-    @RequestMapping("cateat")
+    @RequestMapping(value = "cateat")
     public String cateat(String str){
         return helloRemote.hello(str);
     }
 
-    @RequestMapping("catlove")
+    @RequestMapping(value = "catlove")
     public Girl catlove(){
         return helloRemote.meetGirl();
     }
