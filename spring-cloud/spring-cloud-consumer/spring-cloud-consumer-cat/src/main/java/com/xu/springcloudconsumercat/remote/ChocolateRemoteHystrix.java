@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
  * spring-practice
  */
 @Component
-public class HelloRemoteHystrix implements HelloRemote {
+public class ChocolateRemoteHystrix implements ChocolateRemote {
     @Override
     public String hello(String str) {
         return "消息调用失败";

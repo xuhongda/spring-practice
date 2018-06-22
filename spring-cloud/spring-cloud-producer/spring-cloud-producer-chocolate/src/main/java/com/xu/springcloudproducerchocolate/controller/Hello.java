@@ -1,7 +1,7 @@
-package com.xu.springcloudproducercake.controller;
+package com.xu.springcloudproducerchocolate.controller;
 
 import com.xu.pojo.Girl;
-import com.xu.springcloudproducercake.service.impl.GetGirlImpl;
+import com.xu.springcloudproducerchocolate.service.impl.GetGirlImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;

@@ -1,7 +1,7 @@
-package com.xu.springcloudproducercake.service.impl;
+package com.xu.springcloudproducerchocolate.service.impl;
 
 import com.xu.pojo.Girl;
-import com.xu.springcloudproducercake.service.GetGirl;
+import com.xu.springcloudproducerchocolate.service.GetGirl;
 import org.springframework.stereotype.Service;
 
 import java.util.Random;
@@ -12,6 +12,7 @@ import java.util.Random;
  * spring-practice
  */
 @Service
+
 public class GetGirlImpl implements GetGirl {
 
 

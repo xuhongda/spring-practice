@@ -1,4 +1,4 @@
-package com.xu.springcloudproducerhello;
+package com.xu.springcloudproducerchocolate;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -7,7 +7,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class SpringCloudProducerCakeApplicationTests {
+public class SpringCloudProducerChocolateApplicationTests {
 
     @Test
     public void contextLoads() {

@@ -1,4 +1,4 @@
-package com.xu.springcloudproducercake.service;
+package com.xu.springcloudproducerchocolate.service;
 
 
 import com.xu.pojo.Girl;
@@ -9,5 +9,9 @@ import com.xu.pojo.Girl;
  * spring-practice
  */
 public interface GetGirl {
+    /**
+     * 遇见一个女孩
+     * @return
+     */
     Girl meet();
 }
