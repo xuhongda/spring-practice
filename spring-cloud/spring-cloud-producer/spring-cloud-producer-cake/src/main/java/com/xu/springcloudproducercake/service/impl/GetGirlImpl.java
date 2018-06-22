@@ -1,7 +1,7 @@
-package com.xu.springcloudproducerhello.service.impl;
+package com.xu.springcloudproducercake.service.impl;
 
 import com.xu.pojo.Girl;
-import com.xu.springcloudproducerhello.service.GetGirl;
+import com.xu.springcloudproducercake.service.GetGirl;
 import org.springframework.stereotype.Service;
 
 import java.util.Random;

@@ -1,4 +1,4 @@
-package com.xu.springcloudproducerhello;
+package com.xu.springcloudproducercake;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -9,9 +9,9 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
  */
 @EnableDiscoveryClient
 @SpringBootApplication
-public class SpringCloudProducerHelloApplication {
+public class SpringCloudProducerCakeApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(SpringCloudProducerHelloApplication.class, args);
+        SpringApplication.run(SpringCloudProducerCakeApplication.class, args);
     }
 }

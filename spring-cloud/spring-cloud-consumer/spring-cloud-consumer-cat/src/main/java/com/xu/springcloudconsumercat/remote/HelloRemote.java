@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
  * com.xu.springcloudconsumercat.remote
  * spring-practice
  */
-@FeignClient(name= "spring-cloud-producer-server",fallback = HelloRemoteHystrix.class)
+@FeignClient(name= "spring-cloud-producer-cake",fallback = HelloRemoteHystrix.class)
 public interface HelloRemote {
     /**
      * hello

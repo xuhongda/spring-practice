@@ -1,4 +1,4 @@
-package com.xu.springcloudproducerhello.service;
+package com.xu.springcloudproducercake.service;
 
 
 import com.xu.pojo.Girl;

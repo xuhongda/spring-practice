@@ -3,6 +3,7 @@ package com.xu.springcloudconsumersheep.remote;
 import com.xu.pojo.Girl;
 import org.springframework.cloud.netflix.feign.FeignClient;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 /**
@@ -14,20 +15,20 @@ import org.springframework.web.bind.annotation.RequestParam;
  * com.xu.springcloudconsumercat.remote
  * spring-practice
  */
-@FeignClient(name= "spring-cloud-producer-hello",fallback = HelloRemoteHystrix.class)
+@FeignClient(name= "spring-cloud-producer-cake",fallback = HelloRemoteHystrix.class)
 public interface HelloRemote {
     /**
      * hello
      * @param str <p>@RequestParam 必须加value</p>
      * @return
      */
-    @RequestMapping("hello")
+    @RequestMapping(value = "hello",method = RequestMethod.GET)
     String hello(@RequestParam(value = "str") String str);
 
     /**
      * 获取一个女孩
      * @return
      */
-    @RequestMapping("girl")
+    @RequestMapping(value = "girl",method = RequestMethod.GET)
     Girl meetGirl();
 }

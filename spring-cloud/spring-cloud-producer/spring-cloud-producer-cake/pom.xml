@@ -4,11 +4,11 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.xu</groupId>
-    <artifactId>spring-cloud-producer-hello</artifactId>
+    <artifactId>spring-cloud-producer-cake</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
 
-    <name>spring-cloud-producer-hello</name>
+    <name>spring-cloud-producer-cake</name>
     <description>Demo project for Spring Boot</description>
 
     <parent>
