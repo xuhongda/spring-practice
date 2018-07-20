@@ -25,6 +25,6 @@ public class SheepController {
 
     @RequestMapping("sweet/{grass}")
     public String eatCake(@PathVariable("grass") String grass){
-        return cakeRemote.sheetEatCake(grass);
+        return cakeRemote.foodpath(grass);
     }
 }
