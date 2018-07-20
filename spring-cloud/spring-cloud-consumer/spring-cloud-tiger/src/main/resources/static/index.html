@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>index</title>
+    <link rel="stylesheet" href="instagream/instagram.css"/>
+    <script src="jquery/jquery-3.2.1.js"></script>
+</head>
+<body>
+<input type="range" name="points" min="1" max="100" />
+<div class="card-image filter-aden" id="xx">
+    <img src="img/nini.jpg">
+</div>
+<script>
+    $("input[name='points']").mousemove(function () {
+        var v = $("input[name='points']").val();
+        var v = v+'%';
+        console.log(v);
+        $("#xx").css("brightness",v)
+    });
+
+
+</script>
+</body>
+</html>
