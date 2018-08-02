@@ -33,11 +33,7 @@ public class UserMapperTest {
 	@Test
 	public void testQuery() throws Exception {
 		List<UserEntity> users = UserMapper.getAll();
-		if(users==null || users.size()==0){
-			System.out.println("is null");
-		}else{
-			System.out.println(users.toString());
-		}
+		users.parallelStream().forEach(System.out::println);
 	}
 	
 	
