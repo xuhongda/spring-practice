@@ -11,6 +11,7 @@
     <modules>
         <module>spring-integration</module>
         <module>spring-component</module>
+		 <module>spring-mybatis</module>
     </modules>
 
     <dependencyManagement>
