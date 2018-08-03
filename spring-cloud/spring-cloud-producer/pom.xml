@@ -20,6 +20,10 @@
         <java.version>1.8</java.version>
         <spring-cloud.version>Dalston.RELEASE</spring-cloud.version>
     </properties>
+    <modules>
+        <module>spring-cloud-producer-cake</module>
+        <module>spring-cloud-producer-chocolate</module>
+    </modules>
     <dependencies>
         <dependency>
             <groupId>com.xu</groupId>
