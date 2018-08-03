@@ -13,7 +13,7 @@ public class HelloReceiver {
 
     @RabbitHandler
     public void process(String hello) {
-        System.err.println("Receiver  : " + hello);
+        System.err.println("Receiver1  : " + hello);
     }
 
 }

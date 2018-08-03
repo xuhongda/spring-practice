@@ -20,7 +20,9 @@ public class HelloTest {
 
 	@Test
 	public void hello() throws Exception {
-		helloSender.send();
+		for (int i = 0; i <1000000000; i++) {
+			helloSender.send();
+		}
 	}
 
 

@@ -1,20 +1,19 @@
-package springpractice.demo.rabbit.receiver;
+package com.xu.springeatmq.receiver;
 
 import org.springframework.amqp.rabbit.annotation.RabbitHandler;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.stereotype.Component;
 
 /**
- * @author xuhongda on 2018/8/2
- * springpractice.demo.rabbit.receiver
- * spring-practice
+ * @author xuhongda
  */
 @Component
 @RabbitListener(queues = "hello")
-public class HelloReceiver2 {
+public class HelloReceiver {
 
     @RabbitHandler
-    private void process(String hello){
-        System.err.println("接收者2"+hello);
+    public void process(String hello) {
+        System.err.println("eatMQ  : " + hello);
     }
+
 }
