@@ -20,7 +20,12 @@ public class ObjectTest {
     private SendObject sendObject;
 
     @Test
-    public void test1(){
-        sendObject.send(new User("xuhongda",18));
+    public void test1() {
+        for (int i = 0; i <10000; i++) {
+            sendObject.send(new User("xuhongda",18));
+        }
+        while (true){
+
+        }
     }
 }

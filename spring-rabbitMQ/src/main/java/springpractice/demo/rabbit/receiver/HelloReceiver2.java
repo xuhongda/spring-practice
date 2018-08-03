@@ -1,4 +1,4 @@
-package springpractice.demo.rabbit.recevier;
+package springpractice.demo.rabbit.receiver;
 
 import org.springframework.amqp.rabbit.annotation.RabbitHandler;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 
 /**
  * @author xuhongda on 2018/8/2
- * springpractice.demo.rabbit.recevier
+ * springpractice.demo.rabbit.receiver
  * spring-practice
  */
 @Component

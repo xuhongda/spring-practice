@@ -19,14 +19,14 @@ public interface ChocolateRemote {
     /**
      * hello
      * @param str
-     * @return
+     * @return String
      */
     @RequestMapping(value = "hello")
     String hello(@RequestParam(value = "str") String str);
 
     /**
      * 获取一个女孩
-     * @return
+     * @return Girl
      */
     @RequestMapping(value = "girl")
     Girl meetGirl();

@@ -5,7 +5,7 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
-import springpractice.demo.rabbit.recevier.HelloReceiver;
+import springpractice.demo.rabbit.receiver.HelloReceiver;
 import springpractice.demo.rabbit.sender.HelloSender;
 
 @RunWith(SpringRunner.class)
