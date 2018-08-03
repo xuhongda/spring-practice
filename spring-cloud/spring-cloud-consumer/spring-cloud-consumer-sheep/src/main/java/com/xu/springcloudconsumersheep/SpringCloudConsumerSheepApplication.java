@@ -8,6 +8,11 @@ import org.springframework.cloud.netflix.feign.EnableFeignClients;
 import org.springframework.cloud.netflix.hystrix.dashboard.EnableHystrixDashboard;
 
 /**
+ * <p>
+ *     @EnableDiscoveryClient 启用服务的注册与发现
+ *     @EnableFeignClients 启用feign进行远程调用
+ *     @EnableHystrixDashboard 启用Hystrix Dashboard和熔断器
+ * </p>
  * @author xuhongda
  */
 @SpringBootApplication

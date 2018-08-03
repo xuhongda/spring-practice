@@ -11,7 +11,18 @@
     <modules>
         <module>spring-integration</module>
         <module>spring-component</module>
+		 <module>spring-mybatis</module>
+        <module>spring-rabbitMQ</module>
     </modules>
+
+    <developers>
+        <developer>
+            <id>astronaut</id>
+            <name>xuhongda</name>
+            <email>xuhongda7@outlook.com</email>
+        </developer>
+    </developers>
+
 
     <dependencyManagement>
         <dependencies>
