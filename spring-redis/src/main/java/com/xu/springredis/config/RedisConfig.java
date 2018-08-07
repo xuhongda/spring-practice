@@ -15,6 +15,7 @@ import org.springframework.data.redis.connection.RedisConnectionFactory;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.data.redis.serializer.Jackson2JsonRedisSerializer;
+import org.springframework.session.data.redis.config.annotation.web.http.EnableRedisHttpSession;
 
 import java.util.Arrays;
 import java.util.Timer;
@@ -28,13 +29,12 @@ import java.util.concurrent.TimeUnit;
  */
 @Configuration
 @EnableCaching
+@EnableRedisHttpSession(maxInactiveIntervalInSeconds=60*60)
 public class RedisConfig extends CachingConfigurerSupport {
 
     @Override
     @Bean
     public KeyGenerator keyGenerator() {
-
-
          return  (target,method,params)->{
             StringBuilder sb = new StringBuilder();
             sb.append(target.getClass().getName());

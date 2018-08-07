@@ -1,9 +1,7 @@
 package com.xu.springredis.controller;
 
 import com.xu.pojo.People;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
-import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -14,13 +12,28 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 public class CacheTest {
+    /**
+     * 无参数
+     * @return
+     */
+    @Cacheable(value = "noparam")
+    @GetMapping("noparam")
+    public String noparam(){
+       return "cache no param😂";
+    }
+
+    @Cacheable(value = "twoparam")
+    @GetMapping("twoparam")
+    public String noparam(int i,String s){
+        return "cache two param😂";
+    }
 
     /**
      * <p>
      *     默认第一次查询 将会 把 ‘com.xu.springredis.controller.CacheTesthello+[参数]’作为key===》》》全类名+方法名+参数===》》》唯一标识。
      *     后续请求将直接取出value.
      * </p>
-     * @param i
+     * @param i 参数
      * @return People
      */
     @GetMapping("hello")
@@ -29,9 +42,22 @@ public class CacheTest {
         return CacheTest.people(i);
     }
 
+
+    @GetMapping("hello3")
+    @Cacheable(value = {"name1","name2"})
+    public People hello3(int i){
+        return CacheTest.people(i);
+    }
+
+   /* @GetMapping("hello4")
+    @Cacheable(value = {"name1"})
+    public People hello4(int i){
+        return CacheTest.people(i);
+    }*/
+
     /**
      * 使用了 EL 表达式
-     * key:自定义key;condition:缓存条件
+     * key:自定义key;condition:缓存条件 i>100
      * @param i 参数
      * @return People
      */
