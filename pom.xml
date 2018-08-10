@@ -15,6 +15,7 @@
         <module>spring-rabbitMQ</module>
         <module>spring-eatmq</module>
         <module>spring-cloud</module>
+        <module>spring-redis</module>
     </modules>
 
     <developers>
