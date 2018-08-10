@@ -2,6 +2,7 @@ package com.xu.springredis.controller;
 
 import com.xu.pojo.People;
 import org.springframework.cache.annotation.Cacheable;
+import org.springframework.cache.interceptor.KeyGenerator;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -13,8 +14,9 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class CacheTest {
     /**
+     * 只有public 方法会被缓存
      * 无参数
-     * @return
+     * @return String
      */
     @Cacheable(value = "noparam")
     @GetMapping("noparam")
@@ -22,7 +24,7 @@ public class CacheTest {
        return "cache no param😂";
     }
 
-    @Cacheable(value = "twoparam")
+    @Cacheable(value = "twoparam") //spring 4.0 以后有了cacheNames 比value更能表达意思
     @GetMapping("twoparam")
     public String noparam(int i,String s){
         return "cache two param😂";
@@ -31,6 +33,7 @@ public class CacheTest {
     /**
      * <p>
      *     默认第一次查询 将会 把 ‘com.xu.springredis.controller.CacheTesthello+[参数]’作为key===》》》全类名+方法名+参数===》》》唯一标识。
+     *     这是由 配置 {@link KeyGenerator}  规则产生的
      *     后续请求将直接取出value.
      * </p>
      * @param i 参数
@@ -63,7 +66,7 @@ public class CacheTest {
      */
     @Cacheable(value = "springCache2", key="#i",condition="#i>100")
     @GetMapping("hello2")
-    public People hello2(int i){
+    public People hello2(int i,boolean b){
         return CacheTest.people(i);
     }
     private static People people(int i){
