@@ -17,6 +17,7 @@
         <module>spring-cloud</module>
         <module>spring-bootweb</module>
         <module>spring-cloud-config</module>
+        <module>spring-cloud-configwitheureka</module>
     </modules>
 
     <developers>
