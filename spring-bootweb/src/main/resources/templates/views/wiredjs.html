@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>wired</title>
+    <script src="https://unpkg.com/wired-elements@latest/dist/wired-elements.bundled.min.js"></script>
+</head>
+<style>
+    .bg{
+        background: linear-gradient(#ddeff9, #bdcbcb);
+    }
+    .x{
+
+        text-align: center; /*让div内部文字居中*/
+        border-radius: 20px;
+        width: 300px;
+        height: 350px;
+        margin: auto;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        /*background-color: azure;*/
+    }
+    #box{
+        background: linear-gradient(to right, rgba(213, 224, 238, 0.4), rgba(159, 169, 188, 0.5)), url("/images/640.png");
+        height: 1035px;
+        width: 690px;
+    }
+</style>
+<body class="bg">
+    <div id="box">
+        <div class="x">
+            <wired-card elevation="5" class="">
+                <h4>七夕遇见TA</h4>
+                <p>
+                    七夕，你想与谁度过❤
+                </p>
+                <wired-icon-button class="pinkbg" tabindex="0" role="button" aria-label="favorite">favorite</wired-icon-button>
+            </wired-card>
+            <br/>
+            <br/>
+            <wired-input placeholder="Enter name"></wired-input>
+            <wired-button>Click Me</wired-button>
+        </div>
+    </div>
+
+</body>
+</html>

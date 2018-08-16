@@ -21,9 +21,7 @@ public class HelloController {
         return s;
     }
 
-    private void func() {
-        System.out.println("xxxxxxxxxxxxxxxxx");
-    }
+
 
     @ResponseBody
     @GetMapping("/hello/{ma}")
@@ -31,5 +29,8 @@ public class HelloController {
         return s1+s2+i;
     }
 
-
+    @GetMapping("/test")
+    public String test(){
+        return "wiredjs";
+    }
 }

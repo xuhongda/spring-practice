@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <title>socket</title>
+    <script src="jq/jquery-3.2.1.js"></script>
+</head>
+<body>
+    <button id="btn">点我</button>
+    <P id="view">hi!</P>
+    <script>
+        $(function () {
+            $("#btn").click(function () {
+                //var userId = $("#inpVal").val();
+                //console.log(userId);
+                $.ajax({
+                    url: "http://localhost:8017/push/20",
+                    success: function (result) {
+                        console.log(result);
+                        var ws = new WebSocket("ws://localhost:8017/websocket/20");
+                        ws.onopen = function () {
+                            console.log("onpen");
+                            ws.send("{}");
+                        };
+                        ws.onclose = function () {
+                            console.log("onclose");
+                        };
+
+                        ws.onmessage = function (msg) {
+                            console.log(msg.data);
+                            view(msg.data);
+                        }
+                    }
+                });
+            });
+        });
+
+        function view(data) {
+            $("#view").html(data)
+        }
+    </script>
+</body>
+</html>
