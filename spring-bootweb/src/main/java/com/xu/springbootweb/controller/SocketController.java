@@ -42,6 +42,7 @@ public class SocketController {
     private void fuc(String cid) throws IOException {
         sid = cid;
         getDate();
+        WebSocketServer.sendInfo("hello world!",sid);
     }
 
 }
