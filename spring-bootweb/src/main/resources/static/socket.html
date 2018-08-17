@@ -10,35 +10,55 @@
 </head>
 <body>
     <button id="btn">点我</button>
-    <P id="view">hi!</P>
+    <button id="btn2">点我</button>
+    <P id="view1">hi!</P>
+    <P id="view2">hi!</P>
     <script>
         $(function () {
             $("#btn").click(function () {
 
-                $.ajax({
-                   /* url: "http://localhost:8017/push/20",*/
-                    success: function (result) {
-                        console.log(result);
-                        var ws = new WebSocket("ws://localhost:8017/websocket/20");
-                        ws.onopen = function () {
-                            console.log("onpen");
-                            ws.send("{}");
-                        };
-                        ws.onclose = function () {
-                            console.log("onclose");
-                        };
+                //建立连接
+                var ws = new WebSocket("ws://localhost:8017/websocket/1");
+                ws.onopen = function () {
+                    console.log("onpen");
+                    ws.send("{}");
+                };
+                ws.onclose = function () {
+                    console.log("onclose");
+                };
 
-                        ws.onmessage = function (msg) {
-                            console.log(msg.data);
-                            view(msg.data);
-                        }
-                    }
-                });
+                ws.onmessage = function (msg) {
+                    console.log(msg.data);
+                    view1(msg.data);
+                }
+
+            });
+
+            $("#btn2").click(function () {
+
+                //建立连接
+                var ws = new WebSocket("ws://localhost:8017/websocket/1");
+                ws.onopen = function () {
+                    console.log("onpen");
+                    ws.send("{}");
+                };
+                ws.onclose = function () {
+                    console.log("onclose");
+                };
+
+                ws.onmessage = function (msg) {
+                    console.log(msg.data);
+                    view2(msg.data);
+                }
+
             });
         });
 
-        function view(data) {
-            $("#view").html(data)
+        function view1(data) {
+            $("#view1").html(data);
+        }
+        function view2(data) {
+            $("#view2").html(data);
         }
     </script>
 </body>
