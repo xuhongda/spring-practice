@@ -29,7 +29,7 @@ public class SocketController {
     }
 
 
-    @Scheduled(fixedDelay = 1000)
+   // @Scheduled(fixedDelay = 1000)
     private void getDate() throws IOException {
         Date date = new Date();
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");

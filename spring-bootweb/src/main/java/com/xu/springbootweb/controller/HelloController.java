@@ -1,9 +1,11 @@
 package com.xu.springbootweb.controller;
 
+import com.xu.pojo.People;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.MatrixVariable;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  * @author xuhongda on 2018/8/8
@@ -11,16 +13,34 @@ import org.springframework.web.bind.annotation.ResponseBody;
  * spring-practice
  */
 @Controller
+
 public class HelloController {
     @ResponseBody
     @GetMapping("hello")
-    public String hello(String s){
-
-
-
+    public String hello(@RequestParam String s){
         return s;
     }
 
+    /**
+     * <p>@RequestBody 把json 格式的字符串变成对象</p>
+     * @param people
+     * @param host
+     * @param type
+     * @return
+     */
+    @ResponseBody
+    @PostMapping("/json")
+    public String json(@RequestBody People people,@RequestHeader("Host") String host,@RequestHeader("Content-Type") String type){
+        System.out.println(people);
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-DD");
+        String format1 = format.format(new Date());
+        return people.toString()+"\t"+host+"\t"+type+"\t"+format1;
+    }
+
+    @GetMapping("socket")
+    public String socket(){
+        return "socket";
+    }
 
 
     @ResponseBody
@@ -29,8 +49,13 @@ public class HelloController {
         return s1+s2+i;
     }
 
+    @GetMapping("/wiredjs")
+    public String wiredjs(){
+        return "wiredjs";
+    }
+
     @GetMapping("/test")
     public String test(){
-        return "wiredjs";
+        return "test";
     }
 }

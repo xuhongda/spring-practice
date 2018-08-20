@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>test</title>
+    <script src="/jq/jquery-3.2.1.js"></script>
+    <style>
+        .cs{
+            margin-left: auto;
+            margin-right: auto;
+            text-align: center;
+        }
+        .res{
+            background: coral;
+        }
+    </style>
+</head>
+<div class="cs">
+    <h1>TEST</h1>
+    <div>
+        <form id="form">
+           年龄： <input name="age" id="age"/>
+           姓名： <input name="name" id="name"/>
+        </form>
+    </div>
+    <div>
+        <button id="RequestBody" value="s">@RequestBody</button>
+        <button id="po">普通</button>
+    </div>
+    <div class="res">
+        <P id="res1"></P>
+    </div>
+</div>
+
+<script>
+    var form = $("#form");
+    var form = JSON.stringify(form);
+    var people = {
+        "age":18,
+        "name":"xuhongda"
+    };
+
+    $("#RequestBody").click(
+        function () {
+            aj1();
+        }
+    );
+
+    $("#po").click(
+        function(){
+            aj2()
+        }
+    );
+    var s = JSON.stringify(people);
+    function aj1() {
+        $.ajax({
+            url:"http://localhost:8017/json",
+            //把对象转换成json 字符串格式
+            data:form,
+            type:"post",
+            //请求头
+            headers:{
+                "Content-Type":"application/json;charset=utf-8",
+                "xxx":"yyyy"
+            },
+            success: function (data) {
+                res1(data);
+            }
+        })
+    }
+
+    function aj2() {
+
+    }
+
+    function res1(data) {
+        $("#res1").html(data);
+    }
+
+
+</script>
+<body>
+</body>
+</html>

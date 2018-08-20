@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
     <title>socket</title>
-    <script src="jq/jquery-3.2.1.js"></script>
+    <script src="../../static/jq/jquery-3.2.1.js"></script>
 </head>
 <body>
     <button id="btn">点我</button>
@@ -20,7 +20,7 @@
                 //建立连接
                 var ws = new WebSocket("ws://localhost:8017/websocket/1");
                 ws.onopen = function () {
-                    console.log("onpen");
+                    console.log("onopen");
                     ws.send("{}");
                 };
                 ws.onclose = function () {
