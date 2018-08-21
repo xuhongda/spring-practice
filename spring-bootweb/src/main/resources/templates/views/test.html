@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8"/>
     <title>test</title>
     <script src="/jq/jquery-3.2.1.js"></script>
     <style>
@@ -33,13 +33,28 @@
 </div>
 
 <script>
-    var form = $("#form");
-    var form = JSON.stringify(form);
+    var f = $("#form");
+    var form = JSON.stringify(f);
     var people = {
         "age":18,
         "name":"xuhongda"
     };
 
+    var value = form;
+    var s = JSON.stringify(people);
+
+
+    var formElement = document.querySelector("form");
+
+
+    var formdata = new FormData();
+    formdata.append("age",18);
+    formdata.append("name","yan");
+
+    console.log(formdata);
+    
+
+    
     $("#RequestBody").click(
         function () {
             aj1();
@@ -51,12 +66,12 @@
             aj2()
         }
     );
-    var s = JSON.stringify(people);
+   
     function aj1() {
         $.ajax({
             url:"http://localhost:8017/json",
             //把对象转换成json 字符串格式
-            data:form,
+            data:value,
             type:"post",
             //请求头
             headers:{
@@ -70,6 +85,20 @@
     }
 
     function aj2() {
+        $.ajax({
+            url:"http://localhost:8017/xhr",
+            data:formdata,
+            type:"post",
+            processData:false,
+            contentType:false,
+            success: function (data) {
+                res1(data);
+            }
+        })
+
+       /* var request = new XMLHttpRequest();
+        request.open("POST", "http://localhost:8017/xhr");
+        request.send(new FormData(formElement));*/
 
     }
 

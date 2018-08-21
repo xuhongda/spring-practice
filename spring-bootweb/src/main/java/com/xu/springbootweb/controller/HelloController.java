@@ -17,8 +17,8 @@ import java.util.Date;
 public class HelloController {
     @ResponseBody
     @GetMapping("hello")
-    public String hello(@RequestParam String s){
-        return s;
+    public String hello(@RequestParam int age,@RequestParam  String name){
+        return age+name;
     }
 
     /**
@@ -42,11 +42,11 @@ public class HelloController {
         return "socket";
     }
 
-
     @ResponseBody
-    @GetMapping("/hello/{ma}")
-    public String hello2(String s1,String s2,@MatrixVariable(value = "mm",pathVar = "ma") int i){
-        return s1+s2+i;
+    @PostMapping("xhr")
+    public String xhr(@RequestParam String name,@RequestParam int age){
+        System.err.println(name);
+        return name+age;
     }
 
     @GetMapping("/wiredjs")
