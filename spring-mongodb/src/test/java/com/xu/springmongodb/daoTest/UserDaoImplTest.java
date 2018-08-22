@@ -28,13 +28,18 @@ public class UserDaoImplTest {
 
     @Test
     public void findByName() {
+        User xu = userDao.findByName("xu");
+        System.out.println(xu);
     }
 
     @Test
     public void updataUser() {
+        int yan = userDao.updataUser(new User(22222L, "yan", "ai"));
+        System.out.println(yan);
     }
 
     @Test
     public void deleteUserById() {
+        userDao.deleteUserById(1L);
     }
 }
