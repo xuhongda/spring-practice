@@ -46,7 +46,7 @@ public class HelloController {
     @PostMapping("xhr")
     public String xhr(@RequestParam String name,@RequestParam int age){
         System.err.println(name);
-        return name+age;
+        return name+age+new Date().toString();
     }
 
     @GetMapping("/wiredjs")
