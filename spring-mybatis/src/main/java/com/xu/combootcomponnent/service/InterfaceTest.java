@@ -1,5 +1,6 @@
 package com.xu.combootcomponnent.service;
 
+import com.xu.combootcomponnent.dao.UserDao;
 import com.xu.combootcomponnent.entity.UserEntity;
 
 /**
@@ -13,5 +14,7 @@ public interface InterfaceTest {
      * @param id
      * @return UserEntity
      */
-  //  UserEntity getoneUser(long id);
+   UserEntity getoneUser(long id);
+
+   void modify(long id);
 }

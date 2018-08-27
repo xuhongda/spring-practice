@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <title>socket</title>
+    <script src="../../static/jq/jquery-3.2.1.js"></script>
+</head>
+<body>
+    <button id="btn">点我</button>
+    <button id="btn2">点我</button>
+    <P id="view1">hi!</P>
+    <P id="view2">hi!</P>
+    <script>
+        $(function () {
+            $("#btn").click(function () {
+
+                //建立连接
+                var ws = new WebSocket("ws://localhost:8017/websocket/1");
+                ws.onopen = function () {
+                    console.log("onopen");
+                    ws.send("{}");
+                };
+                ws.onclose = function () {
+                    console.log("onclose");
+                };
+
+                ws.onmessage = function (msg) {
+                    console.log(msg.data);
+                    view1(msg.data);
+                }
+
+            });
+
+            $("#btn2").click(function () {
+
+                //建立连接
+                var ws = new WebSocket("ws://localhost:8017/websocket/1");
+                ws.onopen = function () {
+                    console.log("onpen");
+                    ws.send("{}");
+                };
+                ws.onclose = function () {
+                    console.log("onclose");
+                };
+
+                ws.onmessage = function (msg) {
+                    console.log(msg.data);
+                    view2(msg.data);
+                }
+
+            });
+        });
+
+        function view1(data) {
+            $("#view1").html(data);
+        }
+        function view2(data) {
+            $("#view2").html(data);
+        }
+    </script>
+</body>
+</html>

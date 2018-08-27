@@ -22,9 +22,14 @@ public class FanoutTest {
      * 订阅/发布模式会给每一个订阅队列 发送的全部消息，而不是平分
      */
     @Test
-    public void test1(){
-        for (int i = 0; i <10000 ; i++) {
+    public void test1() {
+
+        for (int i = 0; i < 10000; i++) {
             fanoutSender.send();
+        }
+
+        while (true) {
+
         }
     }
 }

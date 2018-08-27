@@ -1,9 +1,11 @@
 package com.xu.springbootweb.controller;
 
+import com.xu.pojo.People;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.MatrixVariable;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  * @author xuhongda on 2018/8/8
@@ -11,25 +13,49 @@ import org.springframework.web.bind.annotation.ResponseBody;
  * spring-practice
  */
 @Controller
+
 public class HelloController {
     @ResponseBody
     @GetMapping("hello")
-    public String hello(String s){
-
-
-
-        return s;
+    public String hello(@RequestParam int age,@RequestParam  String name){
+        return age+name;
     }
 
-    private void func() {
-        System.out.println("xxxxxxxxxxxxxxxxx");
+    /**
+     * <p>@RequestBody 把json 格式的字符串变成对象</p>
+     * @param people
+     * @param host
+     * @param type
+     * @return
+     */
+    @ResponseBody
+    @PostMapping("/json")
+    public String json(@RequestBody People people,@RequestHeader("Host") String host,@RequestHeader("Content-Type") String type){
+        System.out.println(people);
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-DD");
+        String format1 = format.format(new Date());
+        return people.toString()+"\t"+host+"\t"+type+"\t"+format1;
+    }
+
+    @GetMapping("socket")
+    public String socket(){
+        return "socket";
     }
 
     @ResponseBody
-    @GetMapping("/hello/{ma}")
-    public String hello2(String s1,String s2,@MatrixVariable(value = "mm",pathVar = "ma") int i){
-        return s1+s2+i;
+    @PostMapping("xhr")
+    public String xhr(@RequestParam String name,@RequestParam int age){
+        System.err.println(name);
+        return name+age+new Date().toString();
     }
 
+    @GetMapping("/wiredjs")
+    public String wiredjs(){
+        return "wiredjs";
+    }
 
+    @GetMapping("/test")
+    public String test(){
+        return "test";
+    }
 }

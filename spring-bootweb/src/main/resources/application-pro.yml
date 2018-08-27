@@ -1,0 +1,24 @@
+server:
+  port: 8017
+  tomcat:
+    accesslog:
+      buffered: true
+      directory: /usr/log
+      enabled: true
+      file-date-format: .yyyy-MM-dd
+      pattern: common
+      prefix: access_log
+      rename-on-rotate: false
+      request-attributes-enabled: false
+      rotate: true
+      suffix: .log
+
+
+#thymeleaf start
+spring:
+  thymeleaf:
+    mode: HTML5
+    encoding: UTF-8
+    prefix: classpath:/templates/views/
+    cache: true
+#thymeleaf end

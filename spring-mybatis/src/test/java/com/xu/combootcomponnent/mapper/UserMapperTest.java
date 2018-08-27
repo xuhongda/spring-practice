@@ -2,6 +2,7 @@ package com.xu.combootcomponnent.mapper;
 
 import com.xu.combootcomponnent.entity.UserEntity;
 import com.xu.combootcomponnent.enums.UserSexEnum;
+import com.xu.combootcomponnent.service.impl.InterfaceTestImpl;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -17,6 +18,9 @@ public class UserMapperTest {
 
 	@Autowired
 	private com.xu.combootcomponnent.mapper.mysql1Mapper.UserMapper UserMapper;
+
+	@Autowired
+	private InterfaceTestImpl interfaceTest;
 
 	@Test
 	public void testInsert() throws Exception {
@@ -46,4 +50,8 @@ public class UserMapperTest {
 		Assert.assertTrue(("neo".equals(UserMapper.getOne(6l).getNickName())));
 	}
 
+	@Test
+	public void test(){
+		interfaceTest.modify(28L);
+	}
 }
