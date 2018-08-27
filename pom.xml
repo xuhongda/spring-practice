@@ -16,6 +16,7 @@
         <module>spring-eatmq</module>
         <module>spring-cloud</module>
         <module>spring-redis</module>
+        <module>spring-bootweb</module>
     </modules>
 
     <developers>
