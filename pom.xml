@@ -17,6 +17,9 @@
         <module>spring-cloud</module>
         <module>spring-redis</module>
         <module>spring-bootweb</module>
+        <module>spring-cloud-config</module>
+        <module>spring-cloud-configwitheureka</module>
+        <module>spring-mongodb</module>
     </modules>
 
     <developers>
