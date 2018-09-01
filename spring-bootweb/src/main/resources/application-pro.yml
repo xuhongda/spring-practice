@@ -20,5 +20,5 @@ spring:
     mode: HTML5
     encoding: UTF-8
     prefix: classpath:/templates/views/
-    cache: true
+    cache: false
 #thymeleaf end

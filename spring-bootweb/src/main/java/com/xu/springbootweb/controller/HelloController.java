@@ -15,6 +15,11 @@ import java.util.Date;
 @Controller
 
 public class HelloController {
+
+    @GetMapping("swagger")
+    public String swagger(){
+        return "redirect:swagger-ui.html";
+    }
     @ResponseBody
     @GetMapping("hello")
     public String hello(@RequestParam int age,@RequestParam  String name){
