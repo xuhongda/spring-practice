@@ -24,7 +24,14 @@ public class CacheTest {
        return "cache no param😂";
     }
 
-    @Cacheable(value = "twoparam") //spring 4.0 以后有了cacheNames 比value更能表达意思
+    /**
+     * spring 4.0 以后有了cacheNames 比value更能表达意思
+     *
+     * @param i
+     * @param s
+     * @return
+     */
+    @Cacheable(value = "twoparam")
     @GetMapping("twoparam")
     public String noparam(int i,String s){
         return "cache two param😂";

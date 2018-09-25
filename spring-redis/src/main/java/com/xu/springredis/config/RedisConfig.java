@@ -29,8 +29,6 @@ import org.springframework.session.data.redis.config.annotation.web.http.EnableR
 @EnableRedisHttpSession(maxInactiveIntervalInSeconds = 60 * 60)
 public class RedisConfig extends CachingConfigurerSupport {
 
-
-
     /**
      * redis key 生成器
      * spring 也提供了一套默认的生成器{@Link SimpleKeyGenerator}
@@ -91,7 +89,5 @@ public class RedisConfig extends CachingConfigurerSupport {
         template.afterPropertiesSet();
         return template;
     }
-
-
 
 }
