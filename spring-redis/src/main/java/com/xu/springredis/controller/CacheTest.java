@@ -34,7 +34,7 @@ public class CacheTest {
     @Cacheable(value = "twoparam")
     @GetMapping("twoparam")
     public String noparam(int i,String s){
-        return "cache two param😂";
+        return "cache two param😂" + i + s;
     }
 
     /**
@@ -58,12 +58,6 @@ public class CacheTest {
     public People hello3(int i){
         return CacheTest.people(i);
     }
-
-   /* @GetMapping("hello4")
-    @Cacheable(value = {"name1"})
-    public People hello4(int i){
-        return CacheTest.people(i);
-    }*/
 
     /**
      * 使用了 EL 表达式

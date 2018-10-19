@@ -15,6 +15,7 @@ import java.util.Random;
 
 public class GetGirlImpl implements GetGirl {
 
+    @Override
     public Girl meet() {
         String strs1 = "周吴郑王黄刘张袁";
         String strs2 = "ABCDEF";

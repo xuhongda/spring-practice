@@ -75,7 +75,6 @@ public class RedisOpsValueTest {
         redisTemplate.boundValueOps("num").increment(1L);
         // -1
         redisTemplate.boundValueOps("num").increment(-1L);
-
     }
 
 
@@ -91,7 +90,6 @@ public class RedisOpsValueTest {
         //不存在key 就储存 并返回 boolean
         System.out.println(redisTemplate.opsForValue().setIfAbsent("key","multi1"));
         System.out.println(redisTemplate.opsForValue().setIfAbsent("key2","key2"));
-
     }
 
     /**
