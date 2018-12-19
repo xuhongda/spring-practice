@@ -42,10 +42,17 @@ public class RedisOpsValueTest {
     @Test
     public void test2()  {
         People people = new People(18,"xuhongda");
+        // people = null;
         ValueOperations<String,Object> valueOperations = redisTemplate.opsForValue();
-        valueOperations.set("people",people);
-        valueOperations.set("p2",people,30L, TimeUnit.MINUTES);
-        valueOperations.set("num",100);
+        valueOperations.set("people", people, 30L, TimeUnit.SECONDS);
+        Boolean aBoolean = valueOperations.getOperations().hasKey("people");
+        System.out.println(aBoolean);
+        if (aBoolean) {
+            Long people1 = valueOperations.getOperations().getExpire("people");
+            valueOperations.set("people", "xuhongda", people1, TimeUnit.SECONDS);
+        }
+       /* valueOperations.set("p2",people,30L, TimeUnit.MINUTES);
+        valueOperations.set("num",100);*/
     }
 
     @Test
