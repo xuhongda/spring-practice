@@ -13,15 +13,21 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 public class CatEatController {
+
+    private final ChocolateRemote chocolateRemote;
+
     @Autowired
-    private ChocolateRemote chocolateRemote;
-    @RequestMapping(value = "cateat")
-    public String cateat(String str){
+    public CatEatController(ChocolateRemote chocolateRemote) {
+        this.chocolateRemote = chocolateRemote;
+    }
+
+    @RequestMapping(value = "catEat")
+    public String catEat(String str){
         return chocolateRemote.hello(str);
     }
 
-    @RequestMapping(value = "catlove")
-    public Girl catlove(){
+    @RequestMapping(value = "catLove")
+    public Girl catLove(){
         return chocolateRemote.meetGirl();
     }
 

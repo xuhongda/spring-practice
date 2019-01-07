@@ -5,12 +5,11 @@ import org.springframework.cloud.netflix.feign.FeignClient;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import java.awt.print.Pageable;
 
 /**
  * <p>
- *     @FeignClient name:指定远程服务名称 fallback:服务调用失败断路
- *     @RequestMapping value 与远程 Controller mapping名称对应
+ *     <p>@FeignClient</p> name:指定远程服务名称 fallback:服务调用失败断路
+ *     <P>@RequestMapping</P> value 与远程 Controller mapping名称对应
  * </p>
  * @author xuhongda on 2018/6/20
  * com.xu.springcloudconsumercat.remote
