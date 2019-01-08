@@ -14,8 +14,13 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 public class Hello {
+
+    private final GetGirlImpl getGirl;
+
     @Autowired
-    private GetGirlImpl getGirl;
+    public Hello(GetGirlImpl getGirl) {
+        this.getGirl = getGirl;
+    }
 
     @GetMapping("hello")
     public String hello(@RequestParam String str){
