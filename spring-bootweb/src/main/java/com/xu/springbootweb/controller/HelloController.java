@@ -1,6 +1,10 @@
 package com.xu.springbootweb.controller;
 
+import com.xu.pojo.Girl;
 import com.xu.pojo.People;
+import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiImplicitParams;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -62,5 +66,12 @@ public class HelloController {
     @GetMapping("/test")
     public String test(){
         return "test";
+    }
+
+    @ApiOperation("xx")
+    @ApiImplicitParams(@ApiImplicitParam(name = "name", value = "姓名", dataType = "String"))
+    @GetMapping("/girl")
+    public Girl girl(Girl girl) {
+        return girl;
     }
 }
