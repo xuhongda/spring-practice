@@ -1,6 +1,7 @@
 package com.xu.service.impl;
 
-import com.alibaba.fastjson.JSON;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.xu.bean.FaYuanLossBean;
 import com.xu.service.FaYuanLoss;
 import org.jsoup.Jsoup;
@@ -27,6 +28,8 @@ import java.util.List;
  */
 @Service
 public class FaYuanLossImpl implements FaYuanLoss {
+    private ObjectMapper objectMapper = new ObjectMapper();
+
     @Scheduled(cron = "* 0/5 * * * ?")
     @Override
     public List<FaYuanLossBean> crawlerLoss() {
@@ -109,10 +112,12 @@ public class FaYuanLossImpl implements FaYuanLoss {
                     }
                     faYuanLossBeans.add(faYuanLossBean);
                 }
-                System.out.println(JSON.toJSON(faYuanLossBeans));
+                System.out.println(objectMapper.writeValueAsString(faYuanLossBeans));
                 return faYuanLossBeans;
             }
         } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (JsonProcessingException e) {
             e.printStackTrace();
         }
         return null;

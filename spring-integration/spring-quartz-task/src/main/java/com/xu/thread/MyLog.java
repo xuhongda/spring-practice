@@ -11,8 +11,13 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class MyLog {
+
+    private final ThreadPoolTaskExecutor logExecutor;
+
     @Autowired
-    private ThreadPoolTaskExecutor logExecutor;
+    public MyLog(ThreadPoolTaskExecutor logExecutor) {
+        this.logExecutor = logExecutor;
+    }
 
     public void a() {
         logExecutor.execute(new Runnable() {

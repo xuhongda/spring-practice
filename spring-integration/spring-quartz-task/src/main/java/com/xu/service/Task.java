@@ -1,9 +1,6 @@
 package com.xu.service;
 
-import com.xu.bean.FaYuanLossBean;
-import com.xu.bean.QueryPeopleBean;
 
-import java.util.List;
 
 /**
  * @author xuhongda on 2018/5/21
