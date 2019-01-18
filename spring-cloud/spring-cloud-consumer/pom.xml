@@ -4,7 +4,12 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.xu</groupId>
+    <parent>
+        <groupId>com.xu</groupId>
+        <artifactId>spring-practice</artifactId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+
     <artifactId>spring-cloud-consumer</artifactId>
     <version>1.0-SNAPSHOT</version>
 
@@ -12,8 +17,8 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>1.8</java.version>
-        <spring-cloud.version>Dalston.RELEASE</spring-cloud.version>
     </properties>
+
     <modules>
         <module>spring-cloud-tiger</module>
         <module>spring-cloud-consumer-cat</module>
