@@ -1,4 +1,4 @@
-package com.xu.springredis;
+package com.xu.springRedis;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

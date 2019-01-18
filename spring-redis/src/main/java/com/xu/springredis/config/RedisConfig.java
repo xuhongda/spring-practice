@@ -1,4 +1,4 @@
-package com.xu.springredis.config;
+package com.xu.springRedis.config;
 
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
@@ -17,9 +17,11 @@ import org.springframework.data.redis.serializer.Jackson2JsonRedisSerializer;
 import org.springframework.session.data.redis.config.annotation.web.http.EnableRedisHttpSession;
 
 
+
+
 /**
  * @author xuhongda on 2018/8/7
- * com.xu.springredis.config
+ * com.xu.springRedis.config
  * spring-practice
  */
 @Configuration

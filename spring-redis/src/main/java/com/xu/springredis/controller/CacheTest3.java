@@ -1,4 +1,4 @@
-package com.xu.springredis.controller;
+package com.xu.springRedis.controller;
 
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Controller;
@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 /**
  * @author xuhongda on 2018/8/8
- * com.xu.springredis.controller
+ * com.xu.springRedis.controller
  * spring-practice
  */
 @Controller
@@ -16,7 +16,7 @@ public class CacheTest3 {
      * 如下列：
      */
     @GetMapping("inner1")
-    public void inner1(){
+    public void inner1() {
         inner2(8);
     }
 
