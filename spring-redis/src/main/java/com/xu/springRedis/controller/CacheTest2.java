@@ -1,4 +1,4 @@
-package com.xu.springredis.controller;
+package com.xu.springRedis.controller;
 
 import com.xu.pojo.People;
 import org.springframework.cache.annotation.CacheEvict;
@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 /**
  * @author xuhongda on 2018/8/7
- * com.xu.springredis.controller
+ * com.xu.springRedis.controller
  * spring-practice
  */
 @RestController

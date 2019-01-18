@@ -1,4 +1,4 @@
-package com.xu.springredis.controller;
+package com.xu.springRedis.controller;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -8,7 +8,7 @@ import java.util.UUID;
 
 /**
  * @author xuhongda on 2018/8/7
- * com.xu.springredis.controller
+ * com.xu.springRedis.controller
  * spring-practice
  */
 @RestController
