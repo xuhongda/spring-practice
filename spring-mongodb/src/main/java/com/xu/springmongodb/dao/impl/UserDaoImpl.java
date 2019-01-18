@@ -1,6 +1,7 @@
 package com.xu.springmongodb.dao.impl;
 
 import com.mongodb.WriteResult;
+import com.mongodb.client.result.UpdateResult;
 import com.xu.springmongodb.dao.UserDao;
 import com.xu.springmongodb.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,14 +38,14 @@ public class UserDaoImpl implements UserDao {
     }
 
     @Override
-    public int updataUser(User user) {
+    public Boolean updateUser(User user) {
         //1.查出对象
         Query query = new Query(Criteria.where("id").is(user.getId()));
         //2.update
         Update update = new Update().set("userName",user.getUserName()).set("passWord",user.getPassWord());
 
-        WriteResult writeResult = mongoTemplate.updateFirst(query, update, User.class);
-        return writeResult.getN();
+        UpdateResult updateResult = mongoTemplate.updateFirst(query, update, User.class);
+        return updateResult.isModifiedCountAvailable();
     }
 
     @Override

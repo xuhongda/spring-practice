@@ -1,5 +1,6 @@
 package com.xu.thread;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 import org.springframework.stereotype.Service;
@@ -10,6 +11,7 @@ import org.springframework.stereotype.Service;
  * spring-quartz-task
  */
 @Service
+@Slf4j
 public class MyLog {
 
     private final ThreadPoolTaskExecutor logExecutor;
@@ -20,12 +22,7 @@ public class MyLog {
     }
 
     public void a() {
-        logExecutor.execute(new Runnable() {
-            @Override
-            public void run() {
-                System.out.println("thread");
-            }
-        });
+        logExecutor.execute(() -> log.info("thread"));
     }
 
 }

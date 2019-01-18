@@ -33,9 +33,9 @@ public class UserDaoImplTest {
     }
 
     @Test
-    public void updataUser() {
-        int yan = userDao.updataUser(new User(22222L, "yan", "ai"));
-        System.out.println(yan);
+    public void updateUser() {
+        boolean b = userDao.updateUser(new User(22222L, "yan", "ai"));
+        System.out.println(b);
     }
 
     @Test

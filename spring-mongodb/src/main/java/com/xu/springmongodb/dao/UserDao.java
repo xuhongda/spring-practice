@@ -27,7 +27,7 @@ public interface UserDao {
      * @param user
      * @return
      */
-    int updataUser(User user);
+    Boolean updateUser(User user);
 
     /**
      * 删除
