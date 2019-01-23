@@ -27,17 +27,6 @@ import java.util.stream.Stream;
  */
 public class RedisConfig extends CachingConfigurerSupport {
 
-    /**
-     * 选择redis作为默认缓存工具
-     *
-     * @param redisTemplate
-     * @return
-     */
-    @Bean
-    public CacheManager cacheManager(RedisTemplate redisTemplate) {
-        RedisCacheManager rcm = new RedisCacheManager(redisTemplate);
-        return rcm;
-    }
 
     /**
      * retemplate相关配置
