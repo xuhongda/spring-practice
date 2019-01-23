@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 /**
  * @author xuhongda on 2018/9/26
- * com.xu.springredis.controller
+ * com.xu.springRedis.controller
  * spring-practice
  */
 @Controller

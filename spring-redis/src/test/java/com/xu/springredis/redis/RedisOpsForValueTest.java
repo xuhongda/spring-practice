@@ -14,6 +14,7 @@ import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.data.redis.core.ValueOperations;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.io.Serializable;
 import java.util.*;
 import java.util.concurrent.TimeUnit;
 
@@ -30,7 +31,7 @@ public class RedisOpsForValueTest {
     private StringRedisTemplate stringRedisTemplate;
 
     @Autowired
-    private RedisTemplate<String, Object> redisTemplate;
+    private RedisTemplate<String, Serializable> redisTemplate;
 
     @Test
     public void test() throws Exception {
@@ -47,7 +48,7 @@ public class RedisOpsForValueTest {
     public void test2()  {
         People people = new People(18,"xuhongda");
         // people = null;
-        ValueOperations<String,Object> valueOperations = redisTemplate.opsForValue();
+        ValueOperations<String, Serializable> valueOperations = redisTemplate.opsForValue();
         valueOperations.set("people", people, 30L, TimeUnit.SECONDS);
         Boolean aBoolean = valueOperations.getOperations().hasKey("people");
         System.out.println(aBoolean);
@@ -66,7 +67,7 @@ public class RedisOpsForValueTest {
         System.out.println(b);
 
         //获取value
-        Object people = redisTemplate.opsForValue().get("people");
+        Serializable people = redisTemplate.opsForValue().get("people");
 
         //截取key所对应的value字符串
         redisTemplate.opsForValue().get("people",0,2);
