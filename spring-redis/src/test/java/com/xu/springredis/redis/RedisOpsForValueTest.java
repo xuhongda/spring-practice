@@ -1,6 +1,9 @@
 package com.xu.springredis.redis;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.xu.pojo.People;
+import lombok.extern.slf4j.Slf4j;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -21,12 +24,13 @@ import java.util.concurrent.TimeUnit;
  */
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class RedisOpsValueTest {
+@Slf4j
+public class RedisOpsForValueTest {
     @Autowired
     private StringRedisTemplate stringRedisTemplate;
 
     @Autowired
-    private RedisTemplate redisTemplate;
+    private RedisTemplate<String, Object> redisTemplate;
 
     @Test
     public void test() throws Exception {
@@ -103,20 +107,22 @@ public class RedisOpsValueTest {
      * 为多个键赋值，
      */
     @Test
-    public void test7(){
+    public void test7() throws JsonProcessingException {
         Map<String,String> maps = new HashMap<>();
         maps.put("multi1","multi1");
         maps.put("multi2","multi2");
         maps.put("multi3","multi3");
+        ObjectMapper mapper = new ObjectMapper();
         redisTemplate.opsForValue().multiSet(maps);
-        List<String> keys = new ArrayList<>();
+        redisTemplate.opsForValue().append("vv", mapper.writeValueAsString(maps));
+        log.info("maps = {}", maps);
+        /*List<String> keys = new ArrayList<>();
         keys.add("multi1");
         keys.add("multi2");
         keys.add("multi3");
         System.out.println(redisTemplate.opsForValue().multiGet(keys));
-
         //也有判断方法
-        redisTemplate.opsForValue().multiSetIfAbsent(maps);
+        redisTemplate.opsForValue().multiSetIfAbsent(maps);*/
 
     }
 
