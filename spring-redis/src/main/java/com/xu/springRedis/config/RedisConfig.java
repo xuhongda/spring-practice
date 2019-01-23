@@ -63,7 +63,8 @@ public class RedisConfig extends CachingConfigurerSupport {
      */
     @Bean
     public CacheManager cacheManager(RedisConnectionFactory factory) {
-        // 生成一个默认配置，通过config对象即可对缓存进行自定义配置
+
+        /*// 生成一个默认配置，通过config对象即可对缓存进行自定义配置
         RedisCacheConfiguration config = RedisCacheConfiguration.defaultCacheConfig();
         // 设置缓存的默认过期时间，也是使用Duration设置
         config = config.entryTtl(Duration.ofMinutes(1))
@@ -85,7 +86,12 @@ public class RedisConfig extends CachingConfigurerSupport {
                 .initialCacheNames(cacheNames)
                 .withInitialCacheConfigurations(configMap)
                 .build();
-        return cacheManager;
+        return cacheManager;*/
+        return RedisCacheManager
+                .builder(factory)
+                .cacheDefaults(RedisCacheConfiguration.defaultCacheConfig().entryTtl(Duration.ofMinutes(5)))
+                .transactionAware()
+                .build();
 
 
     }
