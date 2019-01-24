@@ -1,4 +1,4 @@
-package com.xu.springRedis.controller;
+package com.xu.springredis.controller;
 
 import com.xu.pojo.People;
 import org.springframework.cache.annotation.CacheEvict;
@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 /**
  * @author xuhongda on 2018/8/7
- * com.xu.springRedis.controller
+ * com.xu.springredis.controller
  * spring-practice
  */
 @RestController
@@ -20,13 +20,13 @@ public class CacheTest2 {
      * @param b
      * @return
      */
-    @CachePut(cacheNames = "test2",key = "#i")
+    @CachePut(cacheNames = "test2", key = "#i")
     @GetMapping("put")
-    public People put(int i,boolean b){
-        if (b){
+    public People put(int i, boolean b) {
+        if (b) {
             return new People(18, "yan");
         }
-        return new People(18,"xuhongda");
+        return new People(18, "xuhongda");
     }
 
     /**
@@ -38,7 +38,7 @@ public class CacheTest2 {
      * @param i
      * @return
      */
-    @CacheEvict(cacheNames = "test2",key = "#i",beforeInvocation = true)
+    @CacheEvict(cacheNames = "test2", key = "#i", beforeInvocation = true)
     @GetMapping("delete")
     public String delete(int i) {
         return "delete" + i;

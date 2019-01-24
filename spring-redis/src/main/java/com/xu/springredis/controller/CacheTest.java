@@ -1,4 +1,4 @@
-package com.xu.springRedis.controller;
+package com.xu.springredis.controller;
 
 import com.xu.pojo.People;
 import org.springframework.cache.annotation.Cacheable;
@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 /**
  * @author xuhongda on 2018/8/7
- * com.xu.springRedis.controller
+ * com.xu.springredis.controller
  * spring-practice
  */
 @RestController
@@ -40,7 +40,7 @@ public class CacheTest {
 
     /**
      * <p>
-     * 默认第一次查询 将会 把 ‘com.xu.springRedis.controller.CacheTestHello+[参数]’作为key===》》》全类名+方法名+参数===》》》唯一标识。
+     * 默认第一次查询 将会 把 ‘com.xu.springredis.controller.CacheTestHello+[参数]’作为key===》》》全类名+方法名+参数===》》》唯一标识。
      * 这是由 配置 {@link KeyGenerator}  规则产生的
      * 后续请求将直接取出value.
      * </p>
