@@ -1,4 +1,4 @@
-package com.xu.springRedis.controller;
+package com.xu.springredis.controller;
 
 import com.xu.pojo.People;
 import org.springframework.cache.annotation.CacheEvict;
