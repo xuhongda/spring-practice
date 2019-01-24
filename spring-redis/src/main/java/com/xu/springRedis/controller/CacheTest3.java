@@ -1,4 +1,4 @@
-package com.xu.springredis.controller;
+package com.xu.springRedis.controller;
 
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Controller;

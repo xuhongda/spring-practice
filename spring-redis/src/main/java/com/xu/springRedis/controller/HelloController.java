@@ -1,4 +1,4 @@
-package com.xu.springredis.controller;
+package com.xu.springRedis.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;

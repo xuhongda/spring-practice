@@ -1,4 +1,4 @@
-package com.xu.springredis.controller;
+package com.xu.springRedis.controller;
 
 import com.xu.pojo.People;
 import org.springframework.cache.annotation.Cacheable;
