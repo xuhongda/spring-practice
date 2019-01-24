@@ -27,6 +27,9 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
+import static java.util.Collections.singletonMap;
+import static org.springframework.data.redis.cache.RedisCacheConfiguration.defaultCacheConfig;
+
 
 /**
  * @author xuhongda on 2018/8/7
@@ -62,34 +65,21 @@ public class RedisConfig extends CachingConfigurerSupport {
      *
      */
     @Bean
-    public CacheManager cacheManager(RedisConnectionFactory factory) {
+    public CacheManager cacheManager(RedisConnectionFactory connectionFactory) {
 
-        /*// 生成一个默认配置，通过config对象即可对缓存进行自定义配置
-        RedisCacheConfiguration config = RedisCacheConfiguration.defaultCacheConfig();
-        // 设置缓存的默认过期时间，也是使用Duration设置
-        config = config.entryTtl(Duration.ofMinutes(1))
-                // 不缓存空值
+        defaultCacheConfig();
+
+        RedisCacheConfiguration config = defaultCacheConfig()
+                .entryTtl(Duration.ofSeconds(1))
                 .disableCachingNullValues();
-
-        // 设置一个初始化的缓存空间set集合
-        Set<String> cacheNames = new HashSet<>();
-        cacheNames.add("timeGroup");
-        cacheNames.add("user");
-
-        // 对每个缓存空间应用不同的配置
-        Map<String, RedisCacheConfiguration> configMap = new HashMap<>();
-        configMap.put("timeGroup", config);
-        configMap.put("user", config.entryTtl(Duration.ofSeconds(120)));
-        // 使用自定义的缓存配置初始化一个cacheManager
-        RedisCacheManager cacheManager = RedisCacheManager.builder(factory)
-                // 注意这两句的调用顺序，一定要先调用该方法设置初始化的缓存名，再初始化相关的配置
-                .initialCacheNames(cacheNames)
-                .withInitialCacheConfigurations(configMap)
-                .build();
-        return cacheManager;*/
-        return RedisCacheManager
-                .builder(factory)
-                .cacheDefaults(RedisCacheConfiguration.defaultCacheConfig().entryTtl(Duration.ofMinutes(5)))
+        /*RedisCacheManager
+                .builder(connectionFactory)
+                .cacheDefaults(defaultCacheConfig().entryTtl(Duration.ofMinutes(5)))
+                .transactionAware()
+                .build();*/
+        return RedisCacheManager.builder(connectionFactory)
+                .cacheDefaults(config)
+                .withInitialCacheConfigurations(singletonMap("predefined", defaultCacheConfig().disableCachingNullValues()))
                 .transactionAware()
                 .build();
 
