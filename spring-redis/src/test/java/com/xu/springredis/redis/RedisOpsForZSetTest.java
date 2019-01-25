@@ -1,10 +1,13 @@
 package com.xu.springredis.redis;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.redis.core.DefaultTypedTuple;
+import org.springframework.data.redis.core.RedisOperations;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.ZSetOperations;
 import org.springframework.test.context.junit4.SpringRunner;
@@ -17,26 +20,29 @@ import java.util.Set;
  * com.xu.springredis.redis
  * spring-practice
  */
+@Slf4j
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class RedisOpsForZSetTest {
 
+    ObjectMapper mapper = new ObjectMapper();
+
     @Autowired
-    private RedisTemplate redisTemplate;
+    private RedisTemplate<String,Object> redisTemplate;
 
     /**
      * 有序 set 集合
      */
     @Test
     public void test() {
-        ZSetOperations<Object, Object> zSetOperations = redisTemplate.opsForZSet();
+        ZSetOperations<String,Object> zSetOperations = redisTemplate.opsForZSet();
         Set<ZSetOperations.TypedTuple<Object>> tuples = new HashSet<>();
         for (int i = 0; i < 10; i++) {
-            ZSetOperations.TypedTuple<Object> objectTypedTuple = new DefaultTypedTuple<>(i + "v", Double.valueOf(i));
+            ZSetOperations.TypedTuple<Object> objectTypedTuple = new DefaultTypedTuple<>(i + "v", (double) i);
             tuples.add(objectTypedTuple);
         }
-        zSetOperations.add("xx", tuples);
-
+        Long l = zSetOperations.add("hello", tuples);
+        log.info("l = {}",l);
     }
 
 

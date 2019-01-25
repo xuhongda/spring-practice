@@ -34,7 +34,7 @@ public class RedisConfig extends CachingConfigurerSupport {
      * @param factory
      * @return
      */
-    @Bean
+    /*@Bean
     public RedisTemplate<String, Object> redisTemplate(RedisConnectionFactory factory) {
 
         RedisTemplate<String, Object> template = new RedisTemplate<>();
@@ -62,7 +62,7 @@ public class RedisConfig extends CachingConfigurerSupport {
         template.afterPropertiesSet();
 
         return template;
-    }
+    }*/
 
     /**
      * 对hash类型的数据操作

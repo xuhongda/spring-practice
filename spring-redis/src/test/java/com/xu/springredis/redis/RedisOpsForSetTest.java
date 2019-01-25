@@ -23,14 +23,14 @@ import java.util.Map;
 public class RedisOpsForSetTest {
 
     @Autowired
-    private RedisTemplate redisTemplate;
+    private RedisTemplate<String,Object> redisTemplate;
 
     @Test
     public void test() {
-        SetOperations setOperations = redisTemplate.opsForSet();
+        SetOperations<String,Object> setOperations = redisTemplate.opsForSet();
         List<Map<Integer, Integer>> list = new ArrayList<>();
         for (int i = 0; i < 10; i++) {
-            Map map = new LinkedHashMap();
+            Map<Integer,Integer> map = new LinkedHashMap<>();
             map.put(i, i);
             list.add(map);
         }

@@ -31,7 +31,7 @@ public class RedisOpsForValueTest {
     private StringRedisTemplate stringRedisTemplate;
 
     @Autowired
-    private RedisTemplate<String, Serializable> redisTemplate;
+    private RedisTemplate<String, Object> redisTemplate;
 
     @Test
     public void test() throws Exception {
@@ -48,16 +48,15 @@ public class RedisOpsForValueTest {
     public void test2()  {
         People people = new People(18,"xuhongda");
         // people = null;
-        ValueOperations<String, Serializable> valueOperations = redisTemplate.opsForValue();
+        ValueOperations<String, Object> valueOperations = redisTemplate.opsForValue();
         valueOperations.set("people", people, 30L, TimeUnit.SECONDS);
-        Boolean aBoolean = valueOperations.getOperations().hasKey("people");
-        System.out.println(aBoolean);
-        if (aBoolean) {
+        Boolean b = valueOperations.getOperations().hasKey("people");
+        if (b != null && b) {
             Long people1 = valueOperations.getOperations().getExpire("people");
             valueOperations.set("people", "xuhongda", people1, TimeUnit.SECONDS);
         }
-       /* valueOperations.set("p2",people,30L, TimeUnit.MINUTES);
-        valueOperations.set("num",100);*/
+        valueOperations.set("p2",people,30L, TimeUnit.MINUTES);
+        valueOperations.set("num",100);
     }
 
     @Test
@@ -67,8 +66,8 @@ public class RedisOpsForValueTest {
         System.out.println(b);
 
         //获取value
-        Serializable people = redisTemplate.opsForValue().get("people");
-
+        Object people = redisTemplate.opsForValue().get("people");
+        log.info("people = {}",people);
         //截取key所对应的value字符串
         redisTemplate.opsForValue().get("people",0,2);
 
