@@ -6,6 +6,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.redis.connection.RedisZSetCommands;
 import org.springframework.data.redis.core.DefaultTypedTuple;
 import org.springframework.data.redis.core.RedisOperations;
 import org.springframework.data.redis.core.RedisTemplate;
@@ -43,6 +44,22 @@ public class RedisOpsForZSetTest {
         }
         Long l = zSetOperations.add("hello", tuples);
         log.info("l = {}",l);
+    }
+
+    /**
+     * 获取值
+     */
+    @Test
+    public void test2(){
+        ZSetOperations<String,Object> zSetOperations = redisTemplate.opsForZSet();
+        Set set = zSetOperations.range("hello",1L,3L);
+        log.info("set = {}",set);
+        RedisZSetCommands.Range range = new RedisZSetCommands.Range();
+        Set rangeByLex1 = zSetOperations.rangeByLex("hello",range);
+        log.info("rangeByLex1 = {}",rangeByLex1);
+        Set rangeByLex2 = zSetOperations.rangeByLex("hello",range, RedisZSetCommands.Limit.limit().count(3));
+        log.info("rangeByLex2 = {}",rangeByLex2);
+
     }
 
 
