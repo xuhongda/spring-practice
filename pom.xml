@@ -19,6 +19,7 @@
         <module>spring-bootweb</module>
         <module>spring-cloud-config</module>
         <module>spring-mongodb</module>
+        <module>spring-jdbcTemplate</module>
     </modules>
 
     <developers>
