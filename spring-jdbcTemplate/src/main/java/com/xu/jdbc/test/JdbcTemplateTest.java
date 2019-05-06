@@ -14,6 +14,7 @@ import javax.sql.DataSource;
 import com.xu.jdbc.bean.Employee;
 import com.xu.jdbc.dao.EmployeeDao;
 import org.junit.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
@@ -33,6 +34,10 @@ public class JdbcTemplateTest {
      * 支持具名参数功能的jdbcTemplate
      */
     private NamedParameterJdbcTemplate njp = ioc.getBean(NamedParameterJdbcTemplate.class);
+
+
+    @Autowired
+    private NamedParameterJdbcTemplate namedParameterJdbcTemplate;
 
 
     @Test

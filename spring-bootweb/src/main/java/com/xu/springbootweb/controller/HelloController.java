@@ -2,9 +2,12 @@ package com.xu.springbootweb.controller;
 
 import com.xu.pojo.Girl;
 import com.xu.pojo.People;
+import com.xu.springbootweb.bean.Dog;
+import com.xu.springbootweb.bean.DogTest;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -19,6 +22,9 @@ import java.util.Date;
 @Controller
 
 public class HelloController {
+
+    @Autowired
+    private DogTest dogTest;
 
     @GetMapping("swagger")
     public String swagger(){
@@ -73,5 +79,12 @@ public class HelloController {
     @GetMapping("/girl")
     public Girl girl(Girl girl) {
         return girl;
+    }
+
+    @ResponseBody
+    @GetMapping("/dog")
+    public String getDof() {
+
+        return dogTest.getDog().getName();
     }
 }
