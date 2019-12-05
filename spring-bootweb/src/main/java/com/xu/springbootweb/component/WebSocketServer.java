@@ -1,6 +1,7 @@
 package com.xu.springbootweb.component;
 
 
+import lombok.EqualsAndHashCode;
 import org.springframework.stereotype.Component;
 
 import javax.websocket.*;
@@ -17,11 +18,12 @@ import cn.hutool.log.LogFactory;
  * com.xu.springbootweb.component
  * spring-practice
  */
+@EqualsAndHashCode
 @Component
 @ServerEndpoint("/websocket/{sid}")
 public class WebSocketServer {
 
-    static Log log=LogFactory.get(WebSocketServer.class);
+    private static Log log=LogFactory.get(WebSocketServer.class);
     /**
      * 静态变量，用来记录当前在线连接数。应该把它设计成线程安全的。
      */
@@ -102,7 +104,7 @@ public class WebSocketServer {
     /**
      * 实现服务器主动推送
      */
-    public void sendMessage(String message) throws IOException {
+    private void sendMessage(String message) throws IOException {
         this.session.getBasicRemote().sendText(message);
     }
 

@@ -13,9 +13,9 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @EnableScheduling
 @EnableSwagger2
 @ImportResource("static/spring/spring.xml")
-public class SpringBootwebApplication {
+public class SpringBootWebApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(SpringBootwebApplication.class, args);
+        SpringApplication.run(SpringBootWebApplication.class, args);
     }
 }
