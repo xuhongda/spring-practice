@@ -1,4 +1,4 @@
-package com.xu.springbootweb.component;
+package com.xu.springbootweb.server;
 
 
 import lombok.EqualsAndHashCode;
@@ -15,7 +15,7 @@ import cn.hutool.log.LogFactory;
 
 /**
  * @author xuhongda on 2018/8/15
- * com.xu.springbootweb.component
+ * com.xu.springbootweb.server
  * spring-practice
  */
 @EqualsAndHashCode
@@ -132,7 +132,7 @@ public class WebSocketServer {
         return onlineCount;
     }
 
-    public static synchronized void addOnlineCount() {
+    private static synchronized void addOnlineCount() {
         WebSocketServer.onlineCount++;
     }
 

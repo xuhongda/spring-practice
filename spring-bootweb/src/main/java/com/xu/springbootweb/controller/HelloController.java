@@ -7,6 +7,8 @@ import com.xu.springbootweb.bean.DogTest;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
+import lombok.Data;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -20,7 +22,7 @@ import java.util.Date;
  * spring-practice
  */
 @Controller
-
+@Slf4j
 public class HelloController {
 
     @Autowired
@@ -46,7 +48,7 @@ public class HelloController {
     @ResponseBody
     @PostMapping("/json")
     public String json(@RequestBody People people,@RequestHeader("Host") String host,@RequestHeader("Content-Type") String type){
-        System.out.println(people);
+        log.info("people = {}",people);
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-DD");
         String format1 = format.format(new Date());
         return people.toString()+"\t"+host+"\t"+type+"\t"+format1;
