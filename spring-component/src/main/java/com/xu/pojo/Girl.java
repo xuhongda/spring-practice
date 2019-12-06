@@ -20,7 +20,7 @@ import lombok.ToString;
 public class Girl {
 
     private String lookLike;
-    @ApiModelProperty(name = "name",value = "姓名")
+
     private String name;
 
     private String age;
