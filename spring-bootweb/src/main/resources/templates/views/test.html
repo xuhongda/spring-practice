@@ -5,12 +5,13 @@
     <title>test</title>
     <script src="/jq/jquery-3.2.1.js"></script>
     <style>
-        .cs{
+        .cs {
             margin-left: auto;
             margin-right: auto;
             text-align: center;
         }
-        .res{
+
+        .res {
             background: coral;
         }
     </style>
@@ -19,8 +20,8 @@
     <h1>TEST</h1>
     <div>
         <form id="form">
-           年龄： <input name="age" id="age"/>
-           姓名： <input name="name" id="name"/>
+            年龄： <input name="age" id="age"/>
+            姓名： <input name="name" id="name"/>
         </form>
     </div>
     <br/>
@@ -35,50 +36,40 @@
 </div>
 
 <script>
-    var f = $("#form");
-    var form = JSON.stringify(f);
-    var people = {
-        "age":18,
-        "name":"xuhongda"
-    };
-
-    var value = form;
-    var s = JSON.stringify(people);
-
-
-    var formElement = document.querySelector("form");
-
 
     var formdata = new FormData();
-    formdata.append("age",18);
-    formdata.append("name","yan");
-
+    formdata.append("age", 18);
+    formdata.append("name", "yan");
     console.log(formdata);
-    
 
-    
     $("#RequestBody").click(
         function () {
-            aj1();
+            var d = {};
+            var t = $('#form').serializeArray();
+            $.each(t, function () {
+                d[this.name] = this.value;
+            });
+            var form = JSON.stringify(d);
+            aj1(form);
         }
     );
 
     $("#po").click(
-        function(){
+        function () {
             aj2()
         }
     );
-   
-    function aj1() {
+
+    function aj1(from) {
         $.ajax({
-            url:"http://localhost:8017/json",
+            url: "http://localhost:8017/json",
             //把对象转换成json 字符串格式
-            data:value,
-            type:"post",
+            data: from,
+            type: "post",
             //请求头
-            headers:{
-                "Content-Type":"application/json;charset=utf-8",
-                "xxx":"yyyy"
+            headers: {
+                "Content-Type": "application/json;charset=utf-8",
+                "xxx": "yyyy"
             },
             success: function (data) {
                 res1(data);
@@ -88,19 +79,19 @@
 
     function aj2() {
         $.ajax({
-            url:"http://localhost:8017/xhr",
-            data:formdata,
-            type:"post",
-            processData:false,
-            contentType:false,
+            url: "http://localhost:8017/xhr",
+            data: formdata,
+            type: "post",
+            processData: false,
+            contentType: false,
             success: function (data) {
                 res1(data);
             }
         })
 
-       /* var request = new XMLHttpRequest();
-        request.open("POST", "http://localhost:8017/xhr");
-        request.send(new FormData(formElement));*/
+        /* var request = new XMLHttpRequest();
+         request.open("POST", "http://localhost:8017/xhr");
+         request.send(new FormData(formElement));*/
 
     }
 
