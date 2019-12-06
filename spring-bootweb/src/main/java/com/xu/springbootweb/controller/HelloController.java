@@ -32,6 +32,8 @@ public class HelloController {
     public String swagger(){
         return "redirect:swagger-ui.html";
     }
+
+
     @ResponseBody
     @GetMapping("hello")
     public String hello(@RequestParam int age,@RequestParam  String name){
@@ -40,10 +42,6 @@ public class HelloController {
 
     /**
      * <p>@RequestBody 把json 格式的字符串变成对象</p>
-     * @param people
-     * @param host
-     * @param type
-     * @return
      */
     @ResponseBody
     @PostMapping("/json")
@@ -54,26 +52,11 @@ public class HelloController {
         return people.toString()+"\t"+host+"\t"+type+"\t"+format1;
     }
 
-    @GetMapping("socket")
-    public String socket(){
-        return "socket";
-    }
-
     @ResponseBody
     @PostMapping("xhr")
     public String xhr(@RequestParam String name,@RequestParam int age){
         System.err.println(name);
         return name+age+new Date().toString();
-    }
-
-    @GetMapping("/wiredjs")
-    public String wiredjs(){
-        return "wiredjs";
-    }
-
-    @GetMapping("/test")
-    public String test(){
-        return "test";
     }
 
     @ApiOperation("xx")

@@ -17,6 +17,10 @@ public class IndexConfig extends WebMvcConfigurerAdapter {
     public void addViewControllers(ViewControllerRegistry registry) {
         registry.addViewController("/").setViewName("index");
         registry.setOrder(Ordered.HIGHEST_PRECEDENCE);
+        registry.addViewController("socket").setViewName("socket");
+        registry.addViewController("wiredjs").setViewName("wiredjs");
+        registry.addViewController("test").setViewName("test");
+        registry.addViewController("test").setViewName("test");
         super.addViewControllers(registry);
     }
 }
