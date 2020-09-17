@@ -40,6 +40,9 @@ public class RestTemplateTest {
         System.out.println(responseEntity.toString());
         System.out.println(responseEntity.getBody());
 
+        String object = restTemplate.postForObject(url, httpEntity, String.class);
+        System.out.println("str object "+object);
+
         // exchange 方法
         ResponseEntity<String> exchange = restTemplate.exchange(url, HttpMethod.POST, httpEntity, String.class);
         System.out.println(exchange.getBody());
