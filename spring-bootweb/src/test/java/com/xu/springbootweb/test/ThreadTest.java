@@ -7,7 +7,7 @@ package com.xu.springbootweb.test;
  */
 public class ThreadTest {
 
-    private static int i = 99999999;
+    private static int i = 999999;
 
     private void fun(){
         Runnable runnable = this::func;
