@@ -61,7 +61,7 @@ public class HelloController {
 
     @ApiOperation("xx")
     @ApiImplicitParams({@ApiImplicitParam(name = "name", value = "姓名", dataType = "String",paramType = "query")
-    ,@ApiImplicitParam(name="age",value = "年龄",dataType = "Integer",paramType = "query")
+    ,@ApiImplicitParam(name="age",value = "年龄",dataType = "int",paramType = "query")
     ,@ApiImplicitParam(name ="lookLike",value = "外貌",dataType = "String",paramType = "query")}
     )
     @GetMapping("/girl")
