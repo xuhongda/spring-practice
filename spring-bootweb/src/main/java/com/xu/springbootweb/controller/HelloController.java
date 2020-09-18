@@ -45,9 +45,9 @@ public class HelloController {
      */
     @ResponseBody
     @PostMapping("/json")
-    public String json(@RequestBody People people,@RequestHeader("Host") String host,@RequestHeader("Content-Type") String type){
+    public String json(@RequestBody People people,@RequestHeader(value = "Host",required = false) String host,@RequestHeader(value = "Content-Type",required = false) String type){
         log.info("people = {}",people);
-        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-DD");
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
         String format1 = format.format(new Date());
         return people.toString()+"\t"+host+"\t"+type+"\t"+format1;
     }
