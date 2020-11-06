@@ -18,7 +18,7 @@ public class MyIntercepter implements HandlerInterceptor {
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-        log.info("pre intercepter...");
+        log.info("a pre intercepter...");
         return true;
     }
 
