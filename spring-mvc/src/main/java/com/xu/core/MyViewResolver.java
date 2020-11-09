@@ -1,8 +1,12 @@
 package com.xu.core;
 
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.core.Ordered;
 import org.springframework.web.servlet.View;
 import org.springframework.web.servlet.ViewResolver;
+
+import java.applet.AppletContext;
 import java.util.Locale;
 
 /**
@@ -18,6 +22,8 @@ public class MyViewResolver implements ViewResolver, Ordered {
 
     @Override
     public View resolveViewName(String viewName, Locale locale) throws Exception {
+
+
 
         System.out.println(viewName);
         if ("view".equals(viewName)){
