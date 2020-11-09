@@ -21,6 +21,11 @@
         <property name="suffix" value=".jsp"/>
     </bean>
 
+
+    <bean class="com.xu.core.MyViewResolver" id="myViewResolver">
+        <property name="order" value="1"/>
+    </bean>
+
     <mvc:annotation-driven>
         <!--区分请求后缀-->
         <mvc:path-matching suffix-pattern="true"/>
