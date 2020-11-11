@@ -16,9 +16,9 @@ public class ServerTest {
 
     //建立两个线程组
     //接受请求
-    static EventLoopGroup bossGroup = new NioEventLoopGroup();
+    private static EventLoopGroup bossGroup = new NioEventLoopGroup();
     //处理请求
-   static EventLoopGroup workerGroup = new NioEventLoopGroup();
+    private static EventLoopGroup workerGroup = new NioEventLoopGroup();
     static  ServerBootstrap serverBootstrap ;
 
     public static boolean start() throws InterruptedException {
