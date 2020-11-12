@@ -11,6 +11,6 @@
     <title>home</title>
 </head>
 <body>
-
+     This is index page
 </body>
 </html>
