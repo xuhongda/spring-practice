@@ -14,12 +14,14 @@ import io.netty.util.concurrent.Future;
  */
 public class ServerTest {
 
-    //建立两个线程组
-    //接受请求
+    /**
+     * 建立两个线程
+     * @link com.xu.netty.first.ServerTest#bossGroup
+     */
+
     private static EventLoopGroup bossGroup = new NioEventLoopGroup();
-    //处理请求
     private static EventLoopGroup workerGroup = new NioEventLoopGroup();
-    static  ServerBootstrap serverBootstrap ;
+    private static  ServerBootstrap serverBootstrap ;
 
     public static boolean start() throws InterruptedException {
 
