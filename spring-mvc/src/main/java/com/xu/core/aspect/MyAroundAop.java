@@ -1,6 +1,7 @@
 package com.xu.core.aspect;
 
 import com.xu.core.MyAnnotation;
+import com.xu.pojo.Constants;
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.Signature;
@@ -43,7 +44,7 @@ public class MyAroundAop {
         if (annotation != null){
             String name = annotation.name();
             System.out.println(name);
-            if ("xuhongda".equals(name)){
+            if (Constants.ME.getValue().equals(name)){
                 log.info("xuhongda & liulizhen");
             }
             return name;
