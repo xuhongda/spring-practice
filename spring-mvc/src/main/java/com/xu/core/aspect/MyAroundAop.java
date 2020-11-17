@@ -34,7 +34,9 @@ public class MyAroundAop {
         System.out.println("before");
     }
 
-
+    /**
+     *  解析自定义注解
+     */
     @Around(value = "@annotation(com.xu.core.MyAnnotation)")
     public String xx(ProceedingJoinPoint joinPoint){
         MethodSignature signature = (MethodSignature)joinPoint.getSignature();
