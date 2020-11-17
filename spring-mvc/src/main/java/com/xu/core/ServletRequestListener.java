@@ -12,7 +12,7 @@ import org.springframework.web.context.support.ServletRequestHandledEvent;
  */
 @Slf4j
 @Component
-public class ServeletRequestListener implements ApplicationListener<ServletRequestHandledEvent> {
+public class ServletRequestListener implements ApplicationListener<ServletRequestHandledEvent> {
     /**
      * Handle an application event.
      *
