@@ -1,11 +1,16 @@
 package com.xu.test;
 
+import com.xu.core.MyAnnotation;
 import com.xu.core.MyViewResolver;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.annotation.AnnotationUtils;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+
+import java.lang.reflect.Field;
+import java.lang.reflect.Method;
 
 /**
  * @author xuhongda on 2020/11/9
@@ -23,5 +28,17 @@ public class SpringTest {
     public void test001(){
        int order = myViewResolver.getOrder();
         System.out.println(order);
+    }
+
+
+    @Test
+    public void test002(){
+        Class<MyAnnotation> myAnnotationClass = MyAnnotation.class;
+        Field[] fields = myAnnotationClass.getFields();
+        MyAnnotation annotation = fields[0].getAnnotation(MyAnnotation.class);
+        System.out.println(annotation);
+        MyAnnotation annotation1 = AnnotationUtils.getAnnotation(annotation, MyAnnotation.class);
+        System.out.println(annotation1);
+
     }
 }

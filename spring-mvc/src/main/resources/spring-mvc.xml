@@ -11,17 +11,17 @@
        http://www.springframework.org/schema/aop/spring-aop.xsd">
 
 
-
-<context:component-scan base-package="com.xu.**" use-default-filters="false">
+    <context:component-scan base-package="com.xu.controller" use-default-filters="false">
         <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
-        <context:include-filter type="annotation" expression="org.springframework.stereotype.Component"/>
     </context:component-scan>
+
+    <context:component-scan base-package="com.xu.core"/>
 
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver" id="internalResourceViewResolver">
         <property name="prefix" value="/WEB-INF/views/"/>
         <property name="suffix" value=".jsp"/>
-        <property name="order" value="2" />
-     </bean>
+        <property name="order" value="2"/>
+    </bean>
 
 
     <bean class="com.xu.core.MyViewResolver" id="myViewResolver">
@@ -40,8 +40,6 @@
         <!-- 所有方式过来的请求都能跨域 -->
         <mvc:mapping path="/**" allowed-methods="*"/>
     </mvc:cors>
-
-
 
 
     <mvc:interceptors>
