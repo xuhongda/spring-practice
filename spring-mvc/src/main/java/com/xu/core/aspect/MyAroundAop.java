@@ -42,6 +42,7 @@ public class MyAroundAop {
 
     /**
      *  解析自定义注解
+     *  环绕切面两大要素：ProceedingJoinPoint 参数 和 返回 Object
      */
     @Around(value = "@annotation(com.xu.core.MyAnnotation)")
     public Object xx(ProceedingJoinPoint joinPoint) throws Throwable {
