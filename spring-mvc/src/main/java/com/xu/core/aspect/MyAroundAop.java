@@ -58,7 +58,7 @@ public class MyAroundAop {
             }
             Parameter[] parameters = method.getParameters();
             for (Parameter p:parameters){
-                System.out.println(p);
+                System.out.println(p.getParameterizedType());
             }
 
             String[] args = {"xx"};
