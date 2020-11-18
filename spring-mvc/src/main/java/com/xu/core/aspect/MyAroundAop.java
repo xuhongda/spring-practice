@@ -46,30 +46,27 @@ public class MyAroundAop {
      */
     @Around(value = "@annotation(com.xu.core.MyAnnotation)")
     public Object xx(ProceedingJoinPoint joinPoint) throws Throwable {
+
         MethodSignature signature = (MethodSignature)joinPoint.getSignature();
         Method method = signature.getMethod();
+        // 获得方法上的注解
         MyAnnotation annotation = method.getAnnotation(MyAnnotation.class);
-
         if (annotation != null){
             String name = annotation.name();
             System.out.println(name);
             if (Constants.ME.getValue().equals(name)){
                 log.info("xuhongda & liulizhen");
             }
-            Parameter[] parameters = method.getParameters();
-            for (Parameter p:parameters){
-                System.out.println(p.getParameterizedType());
-            }
-
-            String[] args = {"xx"};
+            String[] args = {"This is parsed of myAnnotation"};
             //执行目标方法
             Object proceed = joinPoint.proceed(args);
-           /* ApplicationEvent event = new ContextStoppedEvent(context);
-            context.publishEvent(event);*/
             log.info("around end");
             return proceed;
-
         }
-        return null;
+        Object[] params = joinPoint.getArgs();
+        for (Object o:params){
+            System.out.println(o);
+        }
+        return params;
     }
 }
