@@ -7,7 +7,10 @@
 
 
 
-
+        <bean class="com.xu.pojo.Girl" id="girl">
+            <property name="name" value="yan"/>
+            <property name="age" value="18"/>
+        </bean>
 
 
 </beans>
