@@ -1,6 +1,4 @@
-package com.atguigu.test;
-
-import static org.junit.Assert.*;
+package com.xu.jdbc.test;
 
 import java.sql.Connection;
 import java.sql.SQLException;
