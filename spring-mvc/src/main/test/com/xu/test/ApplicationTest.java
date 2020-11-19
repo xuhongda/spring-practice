@@ -12,7 +12,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 public class ApplicationTest {
 
     public static void main(String[] args) {
-        ApplicationContext context =new ClassPathXmlApplicationContext("spring-mvc.xml");
+        ApplicationContext context =new ClassPathXmlApplicationContext("spring-mvc.xml","spring-config.xml");
         MyViewResolver resolver = (MyViewResolver)context.getBean("myViewResolver");
         System.out.println(resolver.getOrder());
     }
