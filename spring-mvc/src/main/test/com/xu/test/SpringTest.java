@@ -9,6 +9,7 @@ import org.springframework.core.annotation.AnnotationUtils;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 
@@ -18,7 +19,7 @@ import java.lang.reflect.Method;
  * spring-practice
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration("classpath:spring-mvc.xml")
+@ContextConfiguration({"classpath:spring-mvc.xml","classpath:spring-config.xml"})
 public class SpringTest {
 
     @Autowired
@@ -34,11 +35,9 @@ public class SpringTest {
     @Test
     public void test002(){
         Class<MyAnnotation> myAnnotationClass = MyAnnotation.class;
-        Field[] fields = myAnnotationClass.getFields();
-        MyAnnotation annotation = fields[0].getAnnotation(MyAnnotation.class);
+        Annotation annotation = myAnnotationClass.getAnnotation(java.lang.annotation.Target.class);
+
         System.out.println(annotation);
-        MyAnnotation annotation1 = AnnotationUtils.getAnnotation(annotation, MyAnnotation.class);
-        System.out.println(annotation1);
 
     }
 }
