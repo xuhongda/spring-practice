@@ -18,6 +18,6 @@ public class Tiger {
 
     @PostConstruct
     public void init(){
-        System.out.println("PostConstruct tigger");
+        System.out.println("PostConstruct tiger");
     }
 }
