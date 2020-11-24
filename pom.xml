@@ -21,6 +21,7 @@
         <module>spring-mongodb</module>
         <module>spring-jdbcTemplate</module>
         <module>spring-mvc</module>
+        <module>spring-basic</module>
     </modules>
 
     <developers>

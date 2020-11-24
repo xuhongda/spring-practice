@@ -25,7 +25,7 @@ import javax.sql.DataSource;
 public class DataSource2Config {
 
     @Bean(name = "mysql2")
-    @ConfigurationProperties(prefix = "spring.datasource.mysql1")
+    @ConfigurationProperties(prefix = "spring.datasource.mysql2")
     public DataSource dataSource(){
         return DataSourceBuilder.create().build();
     }
