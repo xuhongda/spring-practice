@@ -33,11 +33,15 @@ public class SpringLunch {
 
     public static void main(String[] args) {
         ClassPathXmlApplicationContext applicationContext = new ClassPathXmlApplicationContext("spring-bean.xml");
+        //getBean(applicationContext);
     }
 
-    private static void byXml() {
+    /**
+     * 从 spring 容器中取出bean
+     * @param applicationContext 上下文
+     */
+    private static void getBean(ClassPathXmlApplicationContext applicationContext) {
 
-        ClassPathXmlApplicationContext applicationContext = new ClassPathXmlApplicationContext("spring-bean.xml");
 
         Car car = (Car)applicationContext.getBean("car");
 
