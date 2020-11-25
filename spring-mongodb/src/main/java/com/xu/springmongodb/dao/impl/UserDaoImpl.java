@@ -44,8 +44,8 @@ public class UserDaoImpl implements UserDao {
         //2.update
         Update update = new Update().set("userName",user.getUserName()).set("passWord",user.getPassWord());
 
-        UpdateResult updateResult = mongoTemplate.updateFirst(query, update, User.class);
-        return updateResult.isModifiedCountAvailable();
+        WriteResult writeResult = mongoTemplate.updateFirst(query, update, User.class);
+        return writeResult.isUpdateOfExisting();
     }
 
     @Override
