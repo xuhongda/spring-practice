@@ -4,6 +4,7 @@ import com.xu.pojo.People;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.CachePut;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
  * com.xu.springredis.controller
  * spring-practice
  */
+@RequestMapping("CacheTest2")
 @RestController
 public class CacheTest2 {
     /**
