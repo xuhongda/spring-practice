@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class HelloController {
 
     @Autowired
-    private Girl girl;
+    private Girl girl2;
 
     @MyAnnotation
     @GetMapping("hello")
@@ -29,7 +29,7 @@ public class HelloController {
 
     @GetMapping("tt")
     public String tt(){
-        System.out.println(girl.getName()+girl.getAge());
+        System.out.println(girl2.getName()+girl2.getAge());
         return "tt";
     }
 

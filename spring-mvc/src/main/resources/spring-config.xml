@@ -4,13 +4,17 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
 
+    <!--id 区分bean-->
 
+    <bean class="com.xu.pojo.Girl" id="girl">
+        <property name="name" value="yan"/>
+        <property name="age" value="18"/>
+    </bean>
 
-
-        <bean class="com.xu.pojo.Girl" id="girl">
-            <property name="name" value="yan"/>
-            <property name="age" value="18"/>
-        </bean>
+    <bean class="com.xu.pojo.Girl" id="girl2">
+        <property name="name" value="liulizhen"/>
+        <property name="age" value="19"/>
+    </bean>
 
 
 </beans>
