@@ -6,6 +6,7 @@ import org.h2.engine.User;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.lang.Nullable;
@@ -37,13 +38,26 @@ public class H2Test {
 
         List<Teacher> query = jdbcTemplate.query(selectSql, (resultSet, i) -> {
             Teacher teacher = new Teacher();
-            teacher.setId(resultSet.getInt(1));
-            teacher.setName(resultSet.getString(2));
-            teacher.setAge(resultSet.getInt(3));
+            teacher.setId(resultSet.getInt("id")); //对应表字段名
+            teacher.setName(resultSet.getString("name"));
+            teacher.setAge(resultSet.getInt("age"));
             return teacher;
         });
 
         query.forEach(System.out::println);
+    }
+
+
+    @Test
+    public void test2() {
+
+        String selectSql = "select * from teacher";
+
+        List<Teacher> teachers = jdbcTemplate.query(selectSql, new BeanPropertyRowMapper<>(Teacher.class));
+
+        teachers.forEach(System.out::println);
+
+
     }
 
 
