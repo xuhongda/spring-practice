@@ -25,7 +25,7 @@
     </jdbc:embedded-database>
 
 
-    <!--定义springjdbctemplate-->
+    <!--定义SpringJdbcTemplate-->
     <bean class="org.springframework.jdbc.core.JdbcTemplate" id="jdbcTemplate">
         <property name="dataSource" ref="dataSource"/>
     </bean>
