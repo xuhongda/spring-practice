@@ -1,5 +1,10 @@
 package com.xu.core;
 
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.ApplicationEvent;
+import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.View;
 
 import javax.servlet.http.HttpServletRequest;
@@ -11,7 +16,14 @@ import java.util.Map;
  * com.xu.core
  * spring-practice
  */
+@Component
+@Slf4j
 public class MyView implements View {
+
+
+    @Autowired
+    private ApplicationContext applicationContext;
+
 
 
 
@@ -27,6 +39,29 @@ public class MyView implements View {
         String attribute = (String) request.getAttribute("param");
         System.out.println(attribute);
         response.setContentType("text/html");
-        response.getWriter().write("<h1>hello<h1>");
+        response.getWriter().write("<h1>hello,this is my view creat by xuhongda<h1>");
+
+        //发布我的视图事件
+        applicationContext.publishEvent(new MyViewEvent(attribute));
+    }
+}
+
+@Slf4j
+class MyViewEvent extends ApplicationEvent{
+
+    /**
+     * Create a new {@code ApplicationEvent}.
+     *
+     * @param attribute the object on which the event initially occurred or with
+     *               which the event is associated (never {@code null})
+     */
+    public MyViewEvent(String attribute) {
+        super(attribute);
+        System.out.println(attribute);
+    }
+
+
+    public void record(){
+        log.info("MyViewEvent");
     }
 }

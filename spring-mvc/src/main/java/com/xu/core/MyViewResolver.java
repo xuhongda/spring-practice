@@ -1,6 +1,8 @@
 package com.xu.core;
 
 import lombok.extern.slf4j.Slf4j;
+import org.aspectj.lang.annotation.Aspect;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.Ordered;
 import org.springframework.web.servlet.View;
 import org.springframework.web.servlet.ViewResolver;
@@ -17,13 +19,16 @@ public class MyViewResolver implements ViewResolver, Ordered {
 
     private Integer order;
 
+    @Autowired
+    private MyView myView;
+
 
     @Override
     public View resolveViewName(String viewName, Locale locale) throws Exception {
 
         System.out.println(viewName);
         if ("view".equals(viewName)){
-            return new MyView();
+            return myView;
         }
         return null;
     }

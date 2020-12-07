@@ -2,6 +2,9 @@ package com.xu.core;
 
 
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.context.event.EventListener;
+import org.springframework.stereotype.Component;
+
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 
@@ -11,16 +14,13 @@ import javax.servlet.ServletContextListener;
  * spring-practice
  */
 @Slf4j
-public class MyListener implements ServletContextListener {
-
-    @Override
-    public void contextInitialized(ServletContextEvent sce) {
-       log.info("start");
-    }
+@Component
+public class MyListener {
 
 
-    @Override
-    public void contextDestroyed(ServletContextEvent sce) {
 
+    @EventListener
+    public void myView(MyViewEvent myViewEvent) {
+         myViewEvent.record();
     }
 }
