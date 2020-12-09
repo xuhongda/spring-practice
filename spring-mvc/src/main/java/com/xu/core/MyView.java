@@ -55,7 +55,7 @@ class MyViewEvent extends ApplicationEvent{
      * @param attribute the object on which the event initially occurred or with
      *               which the event is associated (never {@code null})
      */
-    public MyViewEvent(String attribute) {
+    public MyViewEvent(String... attribute) {
         super(attribute);
         System.out.println(attribute);
     }
