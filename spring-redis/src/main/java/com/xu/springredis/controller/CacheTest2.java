@@ -18,9 +18,6 @@ import org.springframework.web.bind.annotation.RestController;
 public class CacheTest2 {
     /**
      * 每次请求都会更新缓存值
-     * @param i
-     * @param b
-     * @return
      */
     @CachePut(cacheNames = "test2", key = "#i")
     @GetMapping("put")
@@ -37,8 +34,6 @@ public class CacheTest2 {
      *     注意问题 @CacheEvict 有beforeInvocation 属性默认值为false 表示方法
      *     执行后缓存才会删除，但是如果方法发送异常的话会导致缓存删除不成功
      * </p>
-     * @param i
-     * @return
      */
     @CacheEvict(cacheNames = "test2", key = "#i", beforeInvocation = true)
     @GetMapping("delete")

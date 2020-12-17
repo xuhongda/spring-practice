@@ -19,22 +19,18 @@ public class CacheTest {
      *
      * @return String
      */
-    @Cacheable(value = "noparam")
-    @GetMapping("noparam")
-    public String noparam() {
+    @Cacheable(value = "none")
+    @GetMapping("none")
+    public String noParam() {
         return "cache no param😂";
     }
 
     /**
      * spring 4.0 以后有了cacheNames 比value更能表达意思
-     *
-     * @param i
-     * @param s
-     * @return
      */
-    @Cacheable(value = "twoparam")
-    @GetMapping("twoparam")
-    public String noparam(int i, String s) {
+    @Cacheable(value = "twoArgs")
+    @GetMapping("twoArgs")
+    public String twoParam(int i, String s) {
         return "cache two param😂" + i + s;
     }
 
