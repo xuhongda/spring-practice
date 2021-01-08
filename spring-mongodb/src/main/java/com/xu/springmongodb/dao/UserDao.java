@@ -13,7 +13,7 @@ public interface UserDao {
      * 储存
      * @param user
      */
-    void savaUser(User user);
+    void saveUser(User user);
 
     /**
      * 查询

@@ -27,7 +27,7 @@ public class UserDaoImpl implements UserDao {
     }
 
     @Override
-    public void savaUser(User user) {
+    public void saveUser(User user) {
         mongoTemplate.save(user);
     }
 

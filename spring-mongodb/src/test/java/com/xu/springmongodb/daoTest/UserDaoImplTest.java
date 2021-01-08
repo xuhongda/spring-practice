@@ -21,9 +21,9 @@ public class UserDaoImplTest {
     private UserDaoImpl userDao;
 
     @Test
-    public void savaUser() {
+    public void saveUser() {
 
-        userDao.savaUser(new User(22222L,"xu","1234"));
+        userDao.saveUser(new User(22222L,"xu","1234"));
     }
 
     @Test
