@@ -2,17 +2,14 @@ package com.xu.springbootweb.controller;
 
 import com.xu.pojo.Girl;
 import com.xu.pojo.People;
-import com.xu.springbootweb.bean.Dog;
 import com.xu.springbootweb.bean.DogTest;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
-import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
