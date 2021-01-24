@@ -77,6 +77,6 @@
         <!-- 输出这个级别以及其以上的日志 -->
         <level value="debug" />
         <!-- 使用这个输出器来输出level级别以上的日志 -->
-        <appender-ref ref="STDOUT" />
+        <appender-ref ref="DailyRollingFileAppender" />
     </root>
 </log4j:configuration>

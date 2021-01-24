@@ -52,7 +52,7 @@
     <appender name="TRACE_FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <File>${log.base}/${log.name}-trace.log</File>
         <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
-            <FileNamePattern>${log.base}/${log.name}-trace.log.%i.zip</FileNamePattern>
+            <FileNamePattern>${log.base}/${log.name}-trace.log-%d{yyyy-MM-dd}.%i.zip</FileNamePattern>
             <MinIndex>1</MinIndex>
             <MaxIndex>12</MaxIndex>
         </rollingPolicy>
