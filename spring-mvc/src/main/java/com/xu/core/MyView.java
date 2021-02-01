@@ -38,7 +38,7 @@ public class MyView implements View {
         String attribute = (String) request.getAttribute("param");
         System.out.println(attribute);
         response.setContentType("text/html");
-        response.getWriter().write("<h1>hello,this is my view creat by xuhongda<h1>");
+        response.getWriter().write("<h3>hello,this is my view creat by xuhongda</h3>");
 
         //发布我的视图事件
         applicationContext.publishEvent(new MyViewEvent(attribute));
