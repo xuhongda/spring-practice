@@ -1,6 +1,7 @@
 package com.xu.springbootweb.server;
 
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.EqualsAndHashCode;
 import org.springframework.stereotype.Component;
 
@@ -8,6 +9,8 @@ import javax.websocket.*;
 import javax.websocket.server.PathParam;
 import javax.websocket.server.ServerEndpoint;
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.concurrent.CopyOnWriteArraySet;
 
 import cn.hutool.log.Log;
@@ -54,7 +57,13 @@ public class WebSocketServer {
         log.info("有新窗口开始监听:"+sid+",当前在线人数为" + getOnlineCount());
         this.sid=sid;
         try {
-            sendMessage("连接成功");
+            Map<String,Object> map = new HashMap<>();
+
+            map.put("hasIncreaseMsg",0);
+            map.put("totoalNum",100);
+            ObjectMapper mapper = new ObjectMapper();
+            String value = mapper.writeValueAsString(map);
+            sendMessage(value);
         } catch (IOException e) {
             log.error("websocket IO异常");
         }

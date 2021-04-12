@@ -1,6 +1,8 @@
 package com.xu.springbootweb.controller;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.xu.springbootweb.server.WebSocketServer;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -9,6 +11,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * @author xuhongda on 2018/8/15
@@ -27,14 +31,29 @@ public class SocketController {
         return "success";
     }
 
-
-   // @Scheduled(fixedDelay = 1000)
+    Integer num = 0;
+    @Scheduled(fixedDelay = 15000)
     private void getDate() throws IOException {
         Date date = new Date();
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
         String format1 = format.format(date);
         System.out.println(format1);
-        WebSocketServer.sendInfo(format1,sid);
+
+           /*hasIncreaseMsg:1,
+                        msgCount: 91,
+                        msgName: "车辆碰撞",
+                        msgType: "1",
+                        referJsp: "urgentEvent.html",*/
+        Map<String,Object> map = new HashMap<>();
+        map.put("alarmTime",format1);
+        map.put("hasIncreaseMsg",1);
+        map.put("msgName","车辆碰撞");
+        map.put("totoalNum",num++);
+        map.put("msgType",1);
+        map.put("referJsp","urgentEvent.html");
+        map.put("lpno","融L5F95L");
+        ObjectMapper mapper = new ObjectMapper();
+        WebSocketServer.sendInfo(mapper.writeValueAsString(map),sid);
     }
 
 

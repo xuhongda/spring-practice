@@ -28,12 +28,12 @@ public class RestTemplateTest {
         headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
         //请求参数
         MultiValueMap<String, Object> parts = new LinkedMultiValueMap<>();
-        parts.add("s1","hello");
-        parts.add("s2","world");
+        parts.add("name","liu");
+       // parts.add("s2","world");
 
 
         HttpEntity<MultiValueMap> httpEntity = new HttpEntity<>(parts,headers);
-        String url = "http://localhost:8017/hello2";
+        String url = "http://localhost:8017/getGirl";
         RestTemplate restTemplate = new RestTemplate();
         ResponseEntity<String> responseEntity = restTemplate.postForEntity(url, httpEntity, String.class);
 

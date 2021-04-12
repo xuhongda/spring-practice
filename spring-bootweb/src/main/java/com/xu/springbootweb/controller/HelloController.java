@@ -73,4 +73,43 @@ public class HelloController {
 
         return dogTest.getDog().getName();
     }
+
+    @ResponseBody
+    @PostMapping("login")
+    public String login(String username,String password){
+
+        return username + password;
+    }
+
+
+    @ResponseBody
+    @PostMapping("changePassword")
+    public String changePassword(String userName,String oldPassword,String newPassword){
+
+        return userName + oldPassword + newPassword;
+    }
+
+
+
+    @ResponseBody
+    @GetMapping(value = "hello1")
+    public String hello1(String s1,String s2){
+        return s1+s2;
+    }
+
+    @ResponseBody
+    @PostMapping(value = "hello2",consumes = "application/x-www-form-urlencoded")
+    public String hello2(String s1,String s2){
+        return s1+s2;
+    }
+
+
+    @ResponseBody
+    @PostMapping(value = "getGirl")
+    public Girl getGirl(String name){
+        Girl girl = new Girl();
+        girl.setAge("18");
+        girl.setName(name);
+        return girl;
+    }
 }
