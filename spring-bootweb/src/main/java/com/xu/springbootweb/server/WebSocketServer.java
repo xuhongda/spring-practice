@@ -92,11 +92,11 @@ public class WebSocketServer {
         log.info("收到来自窗口"+sid+"的信息:"+message);
         //群发消息
         for (WebSocketServer item : webSocketSet) {
-            try {
+           /* try {
                 item.sendMessage(message);
             } catch (IOException e) {
                 e.printStackTrace();
-            }
+            }*/
         }
     }
 

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<script>
+
+
+    webSocket();
+    function webSocket() {
+        if ("WebSocket" in window) {
+
+            let heartBeatInterval;
+
+            console.log("start a WebSocket!");
+            //let domain = document.domain;
+
+            // 打开一个 web socket
+            //let time = new Date().getTime();
+           // let ws = new WebSocket("ws://"+"58.215.50.50:2048"+"/webSocket/hitAndUbiNotie");
+             let ws = new WebSocket("ws://"+"localhost:8017"+"/websocket/4");
+            //let ws = new WebSocket("ws://"+"192.168.200.102:8038/saasapi"+"/webSocket/hitAndUbiNotie/"+time);
+
+            ws.onopen = function () {
+                // Web Socket 已连接上，使用 send() 方法发送数据
+                ws.send("init");
+                console.log("数据发送中...");
+                clearInterval(heartBeatInterval);
+                heartBeat();
+
+            };
+
+            ws.onmessage = function (evt) {
+
+
+                // var data = evt.data;
+                /* var data = {
+                     hasIncreaseMsg:1,
+                     msgCount: 91,
+                     msgName: "车辆碰撞",
+                     msgType: "1",
+                     referJsp: "urgentEvent.html",
+
+                 };*/
+
+                //console.log("数据已接收: " + evt.data);
+
+                //showTipInfo(evt.data);
+            };
+
+            ws.onclose = function () {
+                // 关闭 websocket
+                console.log("连接已关闭...reConnect...");
+                // 断开重连
+                clearInterval(heartBeatInterval);
+               setTimeout(function () {
+                   webSocket();
+               },10000)
+
+            };
+
+            /**
+             *  定时往后端发送消息保持连接
+             */
+            function heartBeat() {
+                 heartBeatInterval = setInterval(function () {
+                    ws.send("ping")
+                },6000);
+            }
+
+
+
+
+        } else {
+            // 浏览器不支持 WebSocket
+            alert("您的浏览器不支持 WebSocket!");
+        }
+    }
+
+
+
+</script>
+
+</body>
+</html>
