@@ -90,14 +90,6 @@ public class WebSocketServer {
     @OnMessage
     public void onMessage(String message, Session session) {
         log.info("收到来自窗口"+sid+"的信息:"+message);
-        //群发消息
-        for (WebSocketServer item : webSocketSet) {
-           /* try {
-                item.sendMessage(message);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }*/
-        }
     }
 
     /**
