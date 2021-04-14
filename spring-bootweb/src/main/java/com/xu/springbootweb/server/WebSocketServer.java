@@ -34,7 +34,7 @@ public class WebSocketServer {
     /**
      * concurrent包的线程安全Set，用来存放每个客户端对应的MyWebSocket对象。
      */
-    private static CopyOnWriteArraySet<WebSocketServer> webSocketSet = new CopyOnWriteArraySet<>();
+    private static CopyOnWriteArraySet<WebSocketServer> onLineArray = new CopyOnWriteArraySet<>();
 
     /**
      * 与某个客户端的连接会话，需要通过它来给客户端发送数据
@@ -51,7 +51,7 @@ public class WebSocketServer {
     public void onOpen(Session session,@PathParam("sid") String sid) {
         this.session = session;
         //加入set中
-        webSocketSet.add(this);
+        onLineArray.add(this);
         //在线数加1
         addOnlineCount();
         log.info("有新窗口开始监听:"+sid+",当前在线人数为" + getOnlineCount());
@@ -75,7 +75,7 @@ public class WebSocketServer {
     @OnClose
     public void onClose() {
         //从set中删除
-        webSocketSet.remove(this);
+        onLineArray.remove(this);
         //在线数减1
         subOnlineCount();
         log.info("有一连接关闭！当前在线人数为" + getOnlineCount());
@@ -92,11 +92,7 @@ public class WebSocketServer {
         log.info("收到来自窗口"+sid+"的信息:"+message);
     }
 
-    /**
-     * @param session
-     * @param error
-     *
-     */
+
     @OnError
     public void onError(Session session, Throwable error) {
         log.error("发生错误");
@@ -113,23 +109,25 @@ public class WebSocketServer {
     /**
      * 群发自定义消息
      */
-    public static void sendInfo(String message,@PathParam("sid") String sid) throws IOException {
-        log.info("推送消息到窗口"+sid+"，推送内容:"+message);
-        for (WebSocketServer item : webSocketSet) {
+    public static void sendInfo(String message,@PathParam("sid") String sid)  {
+
+        for (WebSocketServer item : onLineArray) {
             try {
                 //这里可以设定只推送给这个sid的，为null则全部推送
                 if(sid==null) {
+                    log.info("群发消息 = {}",message);
                     item.sendMessage(message);
                 }else if(item.sid.equals(sid)){
+                    log.info("推送消息到窗口 = {} , 推送内容 = {} ",sid,message);
                     item.sendMessage(message);
                 }
             } catch (IOException e) {
-                continue;
+                log.info("exception =",e);
             }
         }
     }
 
-    public static synchronized int getOnlineCount() {
+    private static synchronized int getOnlineCount() {
         return onlineCount;
     }
 
@@ -137,7 +135,7 @@ public class WebSocketServer {
         WebSocketServer.onlineCount++;
     }
 
-    public static synchronized void subOnlineCount() {
+    private static synchronized void subOnlineCount() {
         WebSocketServer.onlineCount--;
     }
 }

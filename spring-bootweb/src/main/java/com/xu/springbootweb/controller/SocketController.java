@@ -31,8 +31,8 @@ public class SocketController {
         return "success";
     }
 
-    Integer num = 0;
-    @Scheduled(fixedDelay = 15000)
+    private Integer num = 0;
+    @Scheduled(initialDelay = 5000,fixedDelay = 15000)
     private void getDate() throws IOException {
         Date date = new Date();
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
@@ -44,7 +44,7 @@ public class SocketController {
                         msgName: "车辆碰撞",
                         msgType: "1",
                         referJsp: "urgentEvent.html",*/
-        Map<String,Object> map = new HashMap<>();
+        Map<String,Object> map = new HashMap<>(10);
         map.put("alarmTime",format1);
         map.put("hasIncreaseMsg",1);
         map.put("msgName","车辆碰撞");
