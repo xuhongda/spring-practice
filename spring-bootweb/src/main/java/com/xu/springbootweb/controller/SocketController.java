@@ -36,16 +36,14 @@ public class SocketController {
     private void getDate() throws IOException {
         Date date = new Date();
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
-        String format1 = format.format(date);
-        System.out.println(format1);
-
+        String time = format.format(date);
            /*hasIncreaseMsg:1,
                         msgCount: 91,
                         msgName: "车辆碰撞",
                         msgType: "1",
                         referJsp: "urgentEvent.html",*/
         Map<String,Object> map = new HashMap<>(10);
-        map.put("alarmTime",format1);
+        map.put("alarmTime",time);
         map.put("hasIncreaseMsg",1);
         map.put("msgName","车辆碰撞");
         map.put("totoalNum",num++);

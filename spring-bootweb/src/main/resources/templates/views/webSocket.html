@@ -3,8 +3,51 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <script src="../../static/jq/jquery-3.2.1.js"></script>
 </head>
+
+<style>
+    #rMessage{
+        border:3px solid 	#B0C4DE;
+        border-radius: 2px;
+        height: 300px;
+        width: 700px;
+        overflow-y: scroll
+    }
+    .infoT{
+        font-size: xx-large;
+        font-weight: bolder;
+        color:royalblue;
+    }
+</style>
 <body>
+
+
+
+<div>
+    <span class="infoT">receive messages :</span>
+    <br/>
+    <label for="rMessage">
+        <div id="rMessage">
+
+
+        </div>
+
+    </label>
+    <br/>
+    <br/>
+    <span class="infoT">send messages :</span>
+    <br/>
+    <label for="sMessage">
+        <textarea rows="5" cols="20" id="sMessage" style="height: 100px;width: 700px;overflow-y: scroll">
+
+
+        </textarea>
+
+    </label>
+    <br/>
+    <button style="color: royalblue" id="send"> send </button>
+</div>
 
 
 <script>
@@ -15,14 +58,12 @@
         if ("WebSocket" in window) {
 
             let heartBeatInterval;
-
             console.log("start a WebSocket!");
-            //let domain = document.domain;
 
             // 打开一个 web socket
             //let time = new Date().getTime();
-           // let ws = new WebSocket("ws://"+"58.215.50.50:2048"+"/webSocket/hitAndUbiNotie");
-             let ws = new WebSocket("ws://"+"localhost:8017"+"/websocket/4");
+            // let ws = new WebSocket("ws://"+"58.215.50.50:2048"+"/webSocket/hitAndUbiNotie");
+            let ws = new WebSocket("ws://"+"localhost:8017"+"/websocket/4");
             //let ws = new WebSocket("ws://"+"192.168.200.102:8038/saasapi"+"/webSocket/hitAndUbiNotie/"+time);
 
             ws.onopen = function () {
@@ -34,44 +75,70 @@
 
             };
 
-            ws.onmessage = function (evt) {
-
-
-                // var data = evt.data;
-                /* var data = {
-                     hasIncreaseMsg:1,
-                     msgCount: 91,
-                     msgName: "车辆碰撞",
-                     msgType: "1",
-                     referJsp: "urgentEvent.html",
-
-                 };*/
-
-                //console.log("数据已接收: " + evt.data);
-
-                //showTipInfo(evt.data);
+            ws.onerror = function(){
+                console.log(" websocket has an error");
+                // 断开重连
+                reconnect();
             };
+
+            ws.onmessage = function (evt) {
+                showTipInfo(evt.data);
+            };
+
+            function showTipInfo(data){
+
+              //  let html = "<p>"+data+"</p>";
+                let html = "<div style='color: rebeccapurple;float: left '>"+data+"</div><br/>";
+                $("#rMessage").append(html)
+
+            }
 
             ws.onclose = function () {
                 // 关闭 websocket
                 console.log("连接已关闭...reConnect...");
-                // 断开重连
-                clearInterval(heartBeatInterval);
-               setTimeout(function () {
-                   webSocket();
-               },10000)
-
+                reconnect();
             };
 
             /**
              *  定时往后端发送消息保持连接
              */
             function heartBeat() {
-                 heartBeatInterval = setInterval(function () {
+                heartBeatInterval = setInterval(function () {
                     ws.send("ping")
-                },6000);
+                },30*1000);
             }
 
+
+            function reconnect() {
+                // 断开重连
+                clearInterval(heartBeatInterval);
+                setTimeout(function () {
+                    webSocket();
+                },60000)
+            }
+
+
+           $("#send").click(function () {
+               let text = $("#sMessage").val().trim();
+               let readyState = ws.readyState;
+               console.log(readyState);
+
+               if (readyState === 1){
+                   console.log("text = "+text);
+                   ws.send(text);
+
+                   // 显示发送消息
+                   let date = new Date();
+                   date = formatTime(date);
+                   let html = "<div style='color: #2E8B57;float: right '>"+date+": "+text+"</div></br>";
+                   $("#rMessage").append(html);
+
+                   var message = document.getElementById('rMessage');
+                   message.scrollTop = message.scrollHeight;
+
+               }
+
+           })
 
 
 
@@ -81,6 +148,23 @@
         }
     }
 
+
+    function formatTime(time){
+        let date = new Date(time);
+
+        let year = date.getFullYear(),
+            month = date.getMonth() + 1,//月份是从0开始的
+            day = date.getDate(),
+            hour = date.getHours(),
+            min = date.getMinutes(),
+            sec = date.getSeconds();
+        return year + '-' +
+            month + '-' +
+            day + ' ' +
+            hour + ':' +
+            min + ':' +
+            sec;
+    }
 
 
 </script>
