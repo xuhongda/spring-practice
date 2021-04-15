@@ -21,7 +21,7 @@ public class MyConfig {
         return new EmbeddedDatabaseBuilder()
                 .setType(EmbeddedDatabaseType.H2)
                 .setScriptEncoding("UTF-8")
-                .addScripts("test_h2.sql")
+                .addScripts("data.sql","schema.sql")
                 .build();
     }
 }

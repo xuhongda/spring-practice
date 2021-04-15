@@ -78,7 +78,6 @@
             ws.onerror = function(){
                 console.log(" websocket has an error");
                 // 断开重连
-                reconnect();
             };
 
             ws.onmessage = function (evt) {
@@ -89,7 +88,9 @@
 
               //  let html = "<p>"+data+"</p>";
                 let html = "<div style='color: rebeccapurple;float: left '>"+data+"</div><br/>";
-                $("#rMessage").append(html)
+                $("#rMessage").append(html);
+                var message = document.getElementById('rMessage');
+                message.scrollTop = message.scrollHeight;
 
             }
 
