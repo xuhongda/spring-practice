@@ -75,7 +75,7 @@
     <!-- 日志根输出；root所有日志输出都要遵循的一个 -->
     <root>
         <!-- 输出这个级别以及其以上的日志 -->
-        <level value="debug" />
+        <level value="info" />
         <!-- 使用这个输出器来输出level级别以上的日志 -->
         <appender-ref ref="DailyRollingFileAppender" />
     </root>

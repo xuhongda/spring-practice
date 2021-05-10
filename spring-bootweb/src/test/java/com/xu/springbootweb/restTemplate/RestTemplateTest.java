@@ -9,6 +9,9 @@ import org.springframework.web.client.RestTemplate;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ThreadFactory;
 
 /**
  * @author xuhongda on 2020/9/16
@@ -17,35 +20,83 @@ import java.util.Map;
  */
 public class RestTemplateTest {
 
+
+    public static void main(String[] args) {
+        ExecutorService executorService = Executors.newFixedThreadPool(5);
+        for (int j = 0; j <5 ; j++) {
+            executorService.submit(()->{
+                for (int i = 0; i <401000 ; i++) {
+                    //请求头
+                    HttpHeaders headers = new HttpHeaders();
+                    headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
+                    //请求参数
+                  //  MultiValueMap<String, Object> parts = new LinkedMultiValueMap<>();
+                    HttpEntity<MultiValueMap> httpEntity = new HttpEntity<>(null,headers);
+                    // String url = "http://localhost:8017/getGirl";
+                    String url = "https://www.cugb.edu.cn/content/view?contentId=41001";
+                    RestTemplate restTemplate = new RestTemplate();
+                    // exchange 方法
+                    ResponseEntity<String> exchange = restTemplate.exchange(url, HttpMethod.GET, httpEntity, String.class);
+
+                }
+            });
+        }
+
+
+        executorService.shutdown();
+    }
+
     /**
      *  RestTemplate post 请求
      */
     @Test
     public void test001(){
 
-        //请求头
-        HttpHeaders headers = new HttpHeaders();
-        headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
-        //请求参数
-        MultiValueMap<String, Object> parts = new LinkedMultiValueMap<>();
-        parts.add("name","liu");
-       // parts.add("s2","world");
+
+        ExecutorService executorService = Executors.newFixedThreadPool(5);
+
+        for (int j = 0; j <5 ; j++) {
+            executorService.submit(()->{
+                for (int i = 0; i <401000 ; i++) {
+
+                    //请求头
+                    HttpHeaders headers = new HttpHeaders();
+                    headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
+                    //请求参数
+                    MultiValueMap<String, Object> parts = new LinkedMultiValueMap<>();
+                    //  parts.add("name","liu");
+                    // parts.add("s2","world");
 
 
-        HttpEntity<MultiValueMap> httpEntity = new HttpEntity<>(parts,headers);
-        String url = "http://localhost:8017/getGirl";
-        RestTemplate restTemplate = new RestTemplate();
-        ResponseEntity<String> responseEntity = restTemplate.postForEntity(url, httpEntity, String.class);
+                    HttpEntity<MultiValueMap> httpEntity = new HttpEntity<>(parts,headers);
+                    // String url = "http://localhost:8017/getGirl";
+                    String url = "https://www.cugb.edu.cn/content/view?contentId=41001";
+                    RestTemplate restTemplate = new RestTemplate();
+       /* ResponseEntity<String> responseEntity = restTemplate.postForEntity(url, httpEntity, String.class);
 
         System.out.println(responseEntity.toString());
         System.out.println(responseEntity.getBody());
 
         String object = restTemplate.postForObject(url, httpEntity, String.class);
-        System.out.println("str object "+object);
+        System.out.println("str object "+object);*/
 
-        // exchange 方法
-        ResponseEntity<String> exchange = restTemplate.exchange(url, HttpMethod.POST, httpEntity, String.class);
-        System.out.println(exchange.getBody());
+                    // exchange 方法
+                    ResponseEntity<String> exchange = restTemplate.exchange(url, HttpMethod.GET, httpEntity, String.class);
+                    //System.out.println(exchange.getBody());
+                }
+            });
+        }
+
+
+
+
+
+        executorService.shutdown();
+
+
+
+
+
     }
 
 
