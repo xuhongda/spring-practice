@@ -42,7 +42,6 @@ public class HttpTest {
             executorService.submit(()->{
                 for (int i = 0; i <1*100 ; i++) {
                     restTemplate.exchange(url, HttpMethod.GET, httpEntity, Map.class);
-
                 }
             });
         }

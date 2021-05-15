@@ -1,9 +1,11 @@
 package com.xu.core.aspect;
 
+import com.xu.controller.HelloController;
 import com.xu.core.MyAnnotation;
 import com.xu.pojo.Constants;
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.ProceedingJoinPoint;
+import org.aspectj.lang.Signature;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
@@ -31,30 +33,29 @@ import java.lang.reflect.Parameter;
 public class MyAroundAop {
 
 
-
     @Autowired
     private ApplicationContext context;
 
     @Before("execution(* com.xu.controller.HelloController.*(..))")
-    public void before(){
+    public void before() {
         System.out.println("before");
     }
 
     /**
-     *  解析自定义注解
-     *  环绕切面两大要素：ProceedingJoinPoint 参数 和 返回 Object
+     * 解析自定义注解
+     * 环绕切面两大要素：ProceedingJoinPoint 参数 和 返回 Object
      */
     @Around(value = "@annotation(com.xu.core.MyAnnotation)")
     public Object xx(ProceedingJoinPoint joinPoint) throws Throwable {
 
-        MethodSignature signature = (MethodSignature)joinPoint.getSignature();
+        MethodSignature signature = (MethodSignature) joinPoint.getSignature();
         Method method = signature.getMethod();
         // 获得方法上的注解
         MyAnnotation annotation = method.getAnnotation(MyAnnotation.class);
-        if (annotation != null){
+        if (annotation != null) {
             String name = annotation.name();
             System.out.println(name);
-            if (Constants.ME.getValue().equals(name)){
+            if (Constants.ME.getValue().equals(name)) {
                 log.info("xuhongda & liulizhen");
             }
             String[] args = {"This is parsed of myAnnotation"};
@@ -64,7 +65,7 @@ public class MyAroundAop {
             return proceed;
         }
         Object[] params = joinPoint.getArgs();
-        for (Object o:params){
+        for (Object o : params) {
             System.out.println(o);
         }
         return params;

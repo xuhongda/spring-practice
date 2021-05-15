@@ -1,6 +1,7 @@
 package com.xu.springcloudconsumercat.remote;
 
 import com.xu.pojo.Girl;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
 /**
@@ -11,15 +12,18 @@ import org.springframework.stereotype.Component;
  * com.xu.springcloudconsumercat.remote
  * spring-practice
  */
+@Slf4j
 @Component
 public class ChocolateRemoteHystrix implements ChocolateRemote {
     @Override
     public String hello(String str) {
+        log.info("服务降级");
         return "消息调用失败";
     }
 
     @Override
     public Girl meetGirl() {
+        log.info("服务降级");
         return new Girl("美若天仙","迪丽热巴","18");
     }
 }

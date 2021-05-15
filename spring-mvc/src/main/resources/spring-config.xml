@@ -7,7 +7,7 @@
 
     <!--id 区分bean-->
 
-    <bean class="com.xu.pojo.Girl" id="girl">
+    <!--<bean class="com.xu.pojo.Girl" id="girl" lazy-init="true">
         <property name="name" value="yan"/>
         <property name="age" value="18"/>
     </bean>
@@ -15,7 +15,7 @@
     <bean class="com.xu.pojo.Girl" id="girl2">
         <property name="name" value="liulizhen"/>
         <property name="age" value="19"/>
-    </bean>
+    </bean>-->
 
 
     <!--使用内存数据库H2替换MySQL数据库-->
