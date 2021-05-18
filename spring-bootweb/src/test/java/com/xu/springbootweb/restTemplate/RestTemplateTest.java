@@ -11,7 +11,6 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-import java.util.concurrent.ThreadFactory;
 
 /**
  * @author xuhongda on 2020/9/16
@@ -22,7 +21,7 @@ public class RestTemplateTest {
 
 
     public static void main(String[] args) {
-        ExecutorService executorService = Executors.newFixedThreadPool(500);
+        ExecutorService executorService = Executors.newFixedThreadPool(50);
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
         //请求参数
@@ -31,11 +30,10 @@ public class RestTemplateTest {
         // String url = "http://localhost:8017/getGirl";
         String url = "https://www.cugb.edu.cn/content/view?contentId=41001";
         RestTemplate restTemplate = new RestTemplate();
-        for (int j = 0; j <500 ; j++) {
+        for (int j = 0; j <50 ; j++) {
             executorService.submit(()->{
-                for (int i = 0; i <401000 ; i++) {
+                for (int i = 0; i <400 ; i++) {
                     restTemplate.exchange(url, HttpMethod.GET, httpEntity, String.class);
-
                 }
             });
         }

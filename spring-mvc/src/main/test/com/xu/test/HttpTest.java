@@ -21,9 +21,7 @@ public class HttpTest {
     public static void main(String[] args) {
 
 
-       // AsyncRestTemplate asyncRestTemplate = new AsyncRestTemplate();
-
-        /*ExecutorService executorService = Executors.newFixedThreadPool(50);
+        ExecutorService executorService = Executors.newFixedThreadPool(10);
 
         ScheduledExecutorService scheduledExecutorService = Executors.newScheduledThreadPool(2);
 
@@ -38,7 +36,7 @@ public class HttpTest {
         String url = "https://www.cugb.edu.cn/content/view?contentId=41001";
         RestTemplate restTemplate = new RestTemplate();
 
-        for (int j = 0; j <45 ; j++) {
+        for (int j = 0; j <10 ; j++) {
             executorService.submit(()->{
                 for (int i = 0; i <1*100 ; i++) {
                     restTemplate.exchange(url, HttpMethod.GET, httpEntity, Map.class);
@@ -62,6 +60,6 @@ public class HttpTest {
         },0,10, TimeUnit.SECONDS);
 
 
-        executorService.shutdown();*/
+        executorService.shutdown();
     }
 }
