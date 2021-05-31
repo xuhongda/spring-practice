@@ -28,8 +28,7 @@
         <!--eureka-->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-eureka-server</artifactId>
-            <version>1.4.3.RELEASE</version>
+            <artifactId>spring-cloud-starter-netflix-eureka-server</artifactId>
         </dependency>
 
         <dependency>
@@ -54,12 +53,21 @@
             <version>5.2.8.RELEASE</version>
             <scope>test</scope>
         </dependency>
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <scope>test</scope>
-        </dependency>
+
     </dependencies>
+
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>Finchley.RELEASE</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 
     <build>
         <plugins>

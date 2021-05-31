@@ -1,8 +1,8 @@
 package com.xu.springcloudconsumersheep.remote;
 
 import com.xu.pojo.Girl;
-import org.springframework.cloud.netflix.feign.FeignClient;
-import org.springframework.stereotype.Repository;
+import org.springframework.cloud.openfeign.FeignClient;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -33,4 +33,8 @@ public interface ChocolateRemote {
      */
     @RequestMapping(value = "girl", method = RequestMethod.GET)
     Girl meetGirl();
+
+
+    @RequestMapping(method = RequestMethod.GET, value = "sweet/{path}")
+    String foodPath(@PathVariable(value = "path") String path);
 }

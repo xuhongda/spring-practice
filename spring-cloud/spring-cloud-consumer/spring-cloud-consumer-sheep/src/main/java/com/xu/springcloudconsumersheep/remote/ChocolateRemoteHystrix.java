@@ -19,4 +19,9 @@ public class ChocolateRemoteHystrix implements ChocolateRemote {
     public Girl meetGirl() {
         return new Girl("美若天仙", "迪丽热巴", "18");
     }
+
+    @Override
+    public String foodPath(String path) {
+        return null;
+    }
 }
