@@ -11,6 +11,7 @@ import com.xu.pojo.Girl;
 public interface GetGirl {
     /**
      * 遇见一个女孩
+     *
      * @return Girl
      */
     Girl meet();

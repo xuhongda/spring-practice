@@ -10,15 +10,16 @@ import org.springframework.web.bind.annotation.RequestMethod;
  * com.xu.springcloudconsumersheep.remote
  * spring-practice
  */
-@FeignClient(value ="spring-cloud-producer-cake",fallback = CakeRemoteHystrix.class)
+@FeignClient(value = "spring-cloud-producer-cake", fallback = CakeRemoteHystrix.class)
 public interface CakeRemote {
     /**
      * sheetEatCake
      * 接口名是否需要与生产者 controller 名相同？不需要
      * 只需要 @RequestMapping 路径一致
+     *
      * @param path
      * @return
      */
-    @RequestMapping(method = RequestMethod.GET,value = "sweet/{path}")
+    @RequestMapping(method = RequestMethod.GET, value = "sweet/{path}")
     String foodpath(@PathVariable(value = "path") String path);
 }

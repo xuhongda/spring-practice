@@ -22,12 +22,12 @@ public class CatEatController {
     }
 
     @RequestMapping(value = "catEat")
-    public String catEat(String str){
+    public String catEat(String str) {
         return chocolateRemote.hello(str);
     }
 
     @RequestMapping(value = "catLove")
-    public Girl catLove(){
+    public Girl catLove() {
         return chocolateRemote.meetGirl();
     }
 

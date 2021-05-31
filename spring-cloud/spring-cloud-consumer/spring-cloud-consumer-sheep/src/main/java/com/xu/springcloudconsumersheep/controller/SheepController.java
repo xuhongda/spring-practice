@@ -18,13 +18,14 @@ public class SheepController {
     private ChocolateRemote chocolateRemote;
     @Autowired
     private CakeRemote cakeRemote;
+
     @RequestMapping("eat/{grass}")
-    public String eatGrass(@PathVariable("grass") String grass){
+    public String eatGrass(@PathVariable("grass") String grass) {
         return chocolateRemote.hello(grass);
     }
 
     @RequestMapping("sweet/{grass}")
-    public String eatCake(@PathVariable("grass") String grass){
+    public String eatCake(@PathVariable("grass") String grass) {
         return cakeRemote.foodpath(grass);
     }
 }

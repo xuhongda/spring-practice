@@ -23,12 +23,12 @@ public class Hello {
     }
 
     @GetMapping("hello")
-    public String hello(@RequestParam String str){
+    public String hello(@RequestParam String str) {
         return str;
     }
 
     @GetMapping("girl")
-    public Girl hello2(){
+    public Girl hello2() {
         return getGirl.meet();
     }
 }

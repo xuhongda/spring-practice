@@ -9,11 +9,12 @@ import org.springframework.cloud.netflix.hystrix.dashboard.EnableHystrixDashboar
 
 /**
  * <p>
- *     @EnableDiscoveryClient 启用服务的注册与发现
- *     @EnableFeignClients 启用feign进行远程调用
- *     @EnableHystrixDashboard 启用Hystrix Dashboard和熔断器
- * </p>
+ *
  * @author xuhongda
+ * @EnableDiscoveryClient 启用服务的注册与发现
+ * @EnableFeignClients 启用feign进行远程调用
+ * @EnableHystrixDashboard 启用Hystrix Dashboard和熔断器
+ * </p>
  */
 @SpringBootApplication
 @EnableDiscoveryClient

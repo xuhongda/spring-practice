@@ -8,17 +8,19 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 /**
  * <p>
- *     <p>@FeignClient</p> name:指定远程服务名称 fallback:服务调用失败断路
- *     <P>@RequestMapping</P> value 与远程 Controller mapping名称对应
+ * <p>@FeignClient</p> name:指定远程服务名称 fallback:服务调用失败断路
+ * <P>@RequestMapping</P> value 与远程 Controller mapping名称对应
  * </p>
+ *
  * @author xuhongda on 2018/6/20
  * com.xu.springcloudconsumercat.remote
  * spring-practice
  */
-@FeignClient(name= "spring-cloud-producer-chocolate",fallback = ChocolateRemoteHystrix.class)
+@FeignClient(name = "spring-cloud-producer-chocolate", fallback = ChocolateRemoteHystrix.class)
 public interface ChocolateRemote {
     /**
      * hello
+     *
      * @param str
      * @return String
      */
@@ -27,6 +29,7 @@ public interface ChocolateRemote {
 
     /**
      * 获取一个女孩
+     *
      * @return Girl
      */
     @RequestMapping(value = "girl")

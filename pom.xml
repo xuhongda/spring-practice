@@ -23,7 +23,6 @@
         <module>spring-cloud</module>
         <module>spring-redis</module>
         <module>spring-bootweb</module>
-        <module>spring-cloud-config</module>
         <module>spring-mongodb</module>
         <module>spring-jdbcTemplate</module>
         <module>spring-mvc</module>
