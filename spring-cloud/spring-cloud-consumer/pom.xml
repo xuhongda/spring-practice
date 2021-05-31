@@ -20,8 +20,6 @@
     </properties>
 
     <modules>
-        <module>spring-cloud-tiger</module>
-        <module>spring-cloud-consumer-cat</module>
         <module>spring-cloud-consumer-sheep</module>
     </modules>
 </project>
