@@ -13,8 +13,6 @@ import java.util.List;
 public interface FaYuanLoss {
     /**
      * 全国失信被执行名单
-     *
-     * @return
      */
     List<FaYuanLossBean> crawlerLoss();
 }
