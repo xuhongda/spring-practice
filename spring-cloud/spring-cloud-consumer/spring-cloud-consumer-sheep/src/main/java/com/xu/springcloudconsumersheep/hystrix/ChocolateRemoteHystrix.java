@@ -1,6 +1,7 @@
-package com.xu.springcloudconsumersheep.remote;
+package com.xu.springcloudconsumersheep.hystrix;
 
 import com.xu.pojo.Girl;
+import com.xu.springcloudconsumersheep.remote.ChocolateRemote;
 import org.springframework.stereotype.Component;
 
 /**

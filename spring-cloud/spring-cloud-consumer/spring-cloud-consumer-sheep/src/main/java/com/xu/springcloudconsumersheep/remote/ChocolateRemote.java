@@ -1,6 +1,7 @@
 package com.xu.springcloudconsumersheep.remote;
 
 import com.xu.pojo.Girl;
+import com.xu.springcloudconsumersheep.hystrix.ChocolateRemoteHystrix;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;

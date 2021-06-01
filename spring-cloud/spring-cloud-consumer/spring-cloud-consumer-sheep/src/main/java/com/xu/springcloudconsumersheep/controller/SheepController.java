@@ -15,9 +15,15 @@ import org.springframework.web.bind.annotation.RestController;
 public class SheepController {
 
 
-    /*@Autowired
+    @Autowired
     private ChocolateRemote chocolateRemote;
 
+
+
+    @RequestMapping("hello")
+    public String hello( String grass) {
+        return chocolateRemote.hello(grass);
+    }
 
     @RequestMapping("eat/{grass}")
     public String eatGrass(@PathVariable("grass") String grass) {
@@ -27,5 +33,5 @@ public class SheepController {
     @RequestMapping("sweet/{grass}")
     public String eatCake(@PathVariable("grass") String grass) {
         return chocolateRemote.foodPath(grass);
-    }*/
+    }
 }

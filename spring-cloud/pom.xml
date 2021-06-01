@@ -23,7 +23,6 @@
     <modules>
         <module>spring-cloud-consumer</module>
         <module>spring-cloud-eureka</module>
-        <module>spring-cloud-getaway</module>
         <module>spring-cloud-producer</module>
         <module>spring-cloud-config</module>
     </modules>
