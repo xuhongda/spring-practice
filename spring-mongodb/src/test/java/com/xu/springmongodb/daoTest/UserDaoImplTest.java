@@ -1,5 +1,7 @@
 package com.xu.springmongodb.daoTest;
 
+import com.xu.pojo.Girl;
+import com.xu.springmongodb.dao.impl.GirlDaoImpl;
 import com.xu.springmongodb.dao.impl.UserDaoImpl;
 import com.xu.springmongodb.entity.User;
 import org.junit.Test;
@@ -20,10 +22,18 @@ public class UserDaoImplTest {
     @Autowired
     private UserDaoImpl userDao;
 
+    @Autowired
+    private GirlDaoImpl girlDao;
+
     @Test
     public void saveUser() {
 
         userDao.saveUser(new User(22222L,"xu","1234"));
+    }
+
+    @Test
+    public void saveGirl() {
+        girlDao.saveGirl(new Girl("漂亮","liu","18"));
     }
 
     @Test
