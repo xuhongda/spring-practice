@@ -8,6 +8,8 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.mongodb.core.query.Criteria;
+import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.test.context.junit4.SpringRunner;
 
 /**
@@ -34,6 +36,12 @@ public class UserDaoImplTest {
     @Test
     public void saveGirl() {
         girlDao.saveGirl(new Girl("漂亮","liu","18"));
+    }
+
+    @Test
+    public void deleteGirl() {
+        Query query = new Query(Criteria.where("lookLike").is("漂亮"));
+        girlDao.deleteGirl(query);
     }
 
     @Test
