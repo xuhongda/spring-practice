@@ -5,6 +5,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
+import java.util.Date;
+
 /**
  * @author xuhongda on 2020/11/24
  * com.xu.pojo
@@ -21,4 +23,6 @@ public class Car {
     private String color;
 
     private String price;
+
+    private Date date;
 }
