@@ -20,7 +20,6 @@
         <module>spring-mybatis</module>
         <module>spring-rabbitMQ</module>
         <module>spring-eatmq</module>
-        <module>spring-cloud</module>
         <module>spring-redis</module>
         <module>spring-bootweb</module>
         <module>spring-mongodb</module>
